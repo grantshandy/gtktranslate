@@ -1,0 +1,17 @@
+[package]
+name = "gtktranslate"
+version = "0.1.5"
+authors = ["Defunct Lizard <grantshandy@gmail.com>"]
+edition = "2018"
+readme = "README.md"
+license-file = "LICENSE"
+keywords = ["google", "translate", "language", "gtk"]
+description = "A GTK wrapper for google translate"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+[dependencies.gtk]
+version = "0.8.0"
+features = ["v3_16"]
