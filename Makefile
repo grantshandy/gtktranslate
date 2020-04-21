@@ -1,2 +1,3 @@
 main :
-	./tools/linux/cargo build
+	rustup update
+	cargo build
