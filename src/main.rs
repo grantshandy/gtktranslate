@@ -5,6 +5,6 @@ mod gui {
 }
 
 fn main() {
-    println!("Starting...");
+    println!("Starting GUI...");
     gui::gtk3::launch();
 }

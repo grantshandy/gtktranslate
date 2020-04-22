@@ -2,19 +2,127 @@
 <!-- Generated with glade 3.20.0 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
-  <object class="GtkDialog" id="app_window">
+  <object class="GtkWindow" id="app_window">
     <property name="can_focus">False</property>
-    <property name="type_hint">dialog</property>
-    <child internal-child="vbox">
-      <object class="GtkBox">
+    <property name="default_width">688</property>
+    <property name="default_height">494</property>
+    <property name="hide_titlebar_when_maximized">True</property>
+    <child>
+      <object class="GtkBox" id="window-frame">
+        <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="margin_top">11</property>
-        <property name="margin_bottom">1</property>
         <property name="orientation">vertical</property>
-        <property name="spacing">11</property>
-        <child internal-child="action_area">
-          <object class="GtkButtonBox">
+        <child>
+          <object class="GtkGrid" id="translation-grid">
+            <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="margin_left">25</property>
+            <property name="margin_right">25</property>
+            <property name="margin_top">23</property>
+            <property name="margin_bottom">24</property>
+            <child>
+              <object class="GtkLabel" id="input-label">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_bottom">5</property>
+                <property name="label" translatable="yes">Input</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="output-label">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_top">5</property>
+                <property name="label" translatable="yes">Output</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkComboBoxText" id="input-lang">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="valign">center</property>
+                <property name="margin_left">14</property>
+                <property name="margin_right">16</property>
+                <property name="margin_bottom">5</property>
+                <items>
+                  <item translatable="yes">English</item>
+                  <item translatable="yes">Spanish</item>
+                  <item translatable="yes">French</item>
+                  <item translatable="yes">Italian</item>
+                </items>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkComboBoxText" id="output-lang">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="valign">center</property>
+                <property name="margin_left">14</property>
+                <property name="margin_right">16</property>
+                <property name="margin_top">5</property>
+                <items>
+                  <item translatable="yes">English</item>
+                  <item translatable="yes">French</item>
+                  <item translatable="yes">Spanish</item>
+                  <item translatable="yes">Italian</item>
+                </items>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkTextView" id="input-text">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="margin_bottom">13</property>
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkTextView" id="output-text">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="margin_top">12</property>
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButtonBox" id="button-box">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="margin_right">5</property>
+            <property name="margin_bottom">5</property>
             <property name="layout_style">end</property>
             <child>
               <object class="GtkButton" id="quit-button">
@@ -46,111 +154,8 @@
           </object>
           <packing>
             <property name="expand">False</property>
-            <property name="fill">False</property>
-            <property name="position">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkGrid">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="row_spacing">15</property>
-            <child>
-              <object class="GtkComboBoxText" id="lang-input">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <items>
-                  <item translatable="yes">english</item>
-                  <item translatable="yes">french</item>
-                  <item translatable="yes">spanish</item>
-                  <item translatable="yes">italian</item>
-                  <item translatable="yes">hungarian</item>
-                </items>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="input-label">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="vexpand">False</property>
-                <property name="label" translatable="yes">Input</property>
-                <property name="width_chars">12</property>
-              </object>
-              <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="output-label">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Output</property>
-                <property name="width_chars">12</property>
-              </object>
-              <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkComboBoxText" id="lang-output">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <items>
-                  <item translatable="yes">english</item>
-                  <item translatable="yes">french</item>
-                  <item translatable="yes">italian</item>
-                  <item translatable="yes">hungarian</item>
-                  <item translatable="yes">espanol</item>
-                </items>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkEntry" id="text-input">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="margin_left">9</property>
-                <property name="margin_right">9</property>
-                <property name="hexpand">True</property>
-                <property name="vexpand">True</property>
-                <property name="placeholder_text" translatable="yes">Translation Input</property>
-              </object>
-              <packing>
-                <property name="left_attach">2</property>
-                <property name="top_attach">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkEntry" id="text-output">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="valign">baseline</property>
-                <property name="margin_left">9</property>
-                <property name="margin_right">9</property>
-                <property name="hexpand">True</property>
-                <property name="vexpand">True</property>
-                <property name="placeholder_text" translatable="yes">Translation Output</property>
-              </object>
-              <packing>
-                <property name="left_attach">2</property>
-                <property name="top_attach">1</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">True</property>
             <property name="fill">True</property>
-            <property name="padding">7</property>
-            <property name="position">0</property>
+            <property name="position">1</property>
           </packing>
         </child>
       </object>
