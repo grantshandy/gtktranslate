@@ -7,6 +7,7 @@
     <property name="default_width">688</property>
     <property name="default_height">494</property>
     <property name="hide_titlebar_when_maximized">True</property>
+    <property name="icon_name">format-text-italic</property>
     <child>
       <object class="GtkBox" id="window-frame">
         <property name="visible">True</property>
@@ -125,6 +126,21 @@
             <property name="margin_bottom">5</property>
             <property name="layout_style">end</property>
             <child>
+              <object class="GtkCheckButton" id="verbose">
+                <property name="label" translatable="yes">Verbose</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="draw_indicator">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+                <property name="secondary">True</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkButton" id="quit-button">
                 <property name="label">gtk-quit</property>
                 <property name="visible">True</property>
@@ -135,7 +151,7 @@
               <packing>
                 <property name="expand">True</property>
                 <property name="fill">True</property>
-                <property name="position">0</property>
+                <property name="position">1</property>
               </packing>
             </child>
             <child>
@@ -148,7 +164,7 @@
               <packing>
                 <property name="expand">True</property>
                 <property name="fill">True</property>
-                <property name="position">1</property>
+                <property name="position">2</property>
               </packing>
             </child>
           </object>
