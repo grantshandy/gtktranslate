@@ -4,9 +4,7 @@
 <h1 align="center">Installing</h1>
 <p>gtktranslate is on <a href="https://crates.io">crates.io</a>, so you can install it from the terminal using <a href=https://github.com/rust-lang/cargo/>cargo</a>:</p>
 <code>
-  
   cargo install gtktranslate
-  
 </code>
 <h1 align="center">Building from Source</h1>
 <h3 align="left">Dependencies</h3>
@@ -16,9 +14,7 @@ libgtk-3-dev cargo make pkg-config
 <h3 align="left">Building</h3>
 <p>Building is fairly simple, just:</p>
 <code>
-  
 $ make
 
-# make install
-  
+\# make install
 </code>
