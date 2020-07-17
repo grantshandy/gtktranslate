@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Translate
+Comment=Use Google Translate through a GTK interface.
+GenericName=Translator
+Exec=/usr/bin/gtktranslate
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=org.gnome.DevHelp
+Categories=Network;Office;Education;

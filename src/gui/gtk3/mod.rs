@@ -8,11 +8,6 @@ pub fn launch() {
 	let builder = gtk::Builder::new_from_string(include_str!("app_window.ui"));
 	let window: gtk::Window = builder.get_object("app_window").unwrap();
 
-	let quitbutton: gtk::Button = builder.get_object("quit-button").unwrap();
-		quitbutton.connect_clicked(|_| {
-		gtk::main_quit();
-	});
-
     let translatebutton: gtk::Button = builder.get_object("translate-button").unwrap();
         translatebutton.connect_clicked(move |_| {
         
