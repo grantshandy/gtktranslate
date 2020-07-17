@@ -2,8 +2,8 @@ main :
 	rustup update
 	git clone https://github.com/soimort/translate-shell
 	cd translate-shell && make
-	cargo build
 	cp translate-shell/build/trans /usr/bin
+	cargo build
 
 install:
 	cp target/debug/gtktranslate /usr/bin
