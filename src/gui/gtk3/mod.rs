@@ -25,7 +25,7 @@ pub fn launch() {
         if !source_language.is_empty() && !destination_language.is_empty() {
             cmd = cmd.arg(format!("{}:{}", source_language, destination_language));
         }
-        let command = cmd.arg(text_str);
+        let command = cmd.arg(input);
         let output = cmd.output().unwrap().stdout;
         let output = str::from_utf8(&output).unwrap();
         let mut outputtext: gtk::TextView = builder.get_object("output-text").unwrap();
@@ -33,7 +33,7 @@ pub fn launch() {
 
         outputbuffer.set_text(output);
         
-        println!("{} -> []", input, output);
+        println!("{} -> {}", input, output);
 
     });
 
