@@ -10,5 +10,6 @@ install:
 	cp src/gtktranslate.desktop /usr/share/applications
 
 uninstall:
-	rm /usr/bin/gtktranslate /usr/share/applications/gtktranslate.desktop
+	rm /usr/bin/gtktranslate /usr/share/applications/gtktranslate.desktop /usr/bin/trans
+
 	
