@@ -5,15 +5,13 @@ use std::str;
 pub fn launch() {
 	gtk::init().unwrap_or_else(|_| panic!("GTK could not start!"));
 
-    // Import GLADE Window
 	let builder = gtk::Builder::new_from_string(include_str!("app_window.ui"));
 	let window: gtk::Window = builder.get_object("app_window").unwrap();
 
-    // Import the translate button and execute
-    let translatebutton: gtk::Button = builder.get_object("translate_button").unwrap();
+    let translatebutton: gtk::Button = builder.get_object("translate-button").unwrap();
         translatebutton.connect_clicked(move |_| {
         
-        let mut inputtext: gtk::TextView = builder.get_object("input_text").unwrap();
+        let mut inputtext: gtk::TextView = builder.get_object("input-text").unwrap();
         let mut inputbuffer: gtk::TextBuffer = inputtext.get_buffer().unwrap();
         let (start,end) = inputbuffer.get_bounds();
         let text = inputbuffer.get_text(&start,&end,false).unwrap();
@@ -31,7 +29,7 @@ pub fn launch() {
         let command = cmd.arg(text_str);
         let output = cmd.output().unwrap().stdout;
         let output = str::from_utf8(&output).unwrap();
-        let mut outputtext: gtk::TextView = builder.get_object("output_text").unwrap();
+        let mut outputtext: gtk::TextView = builder.get_object("output-text").unwrap();
         let mut outputbuffer: gtk::TextBuffer = outputtext.get_buffer().unwrap();
 
         outputbuffer.set_text(output);
