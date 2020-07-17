@@ -15,10 +15,9 @@ pub fn launch() {
         let mut inputbuffer: gtk::TextBuffer = inputtext.get_buffer().unwrap();
         let (start,end) = inputbuffer.get_bounds();
         let text = inputbuffer.get_text(&start,&end,false).unwrap();
-        let text_str = text.as_str();
+        let input = text.as_str();
         let mut command = Command::new("/usr/bin/trans");
         let mut cmd = &mut command;
-
         cmd = cmd.arg("-b");
 
         let source_language = "en";
@@ -33,8 +32,9 @@ pub fn launch() {
         let mut outputbuffer: gtk::TextBuffer = outputtext.get_buffer().unwrap();
 
         outputbuffer.set_text(output);
+        
+        println!("{} -> []", input, output);
 
-        dbg!(output);
     });
 
 	window.show_all();
