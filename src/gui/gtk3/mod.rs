@@ -7,7 +7,7 @@ use gtk::License::Gpl30;
 pub fn launch() {
 	gtk::init().unwrap_or_else(|_| panic!("GTK could not start!"));
 
-//	Declare windows and export .ui file.
+//	Declare windows and import .ui file.
 	let builder = gtk::Builder::new_from_string(include_str!("app_window.ui"));
 	let main_window: gtk::Window = builder.get_object("app_window").unwrap();
 	let about_window = AboutDialog::new();
