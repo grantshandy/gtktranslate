@@ -13,7 +13,8 @@ pub fn launch() {
 	let about_window = AboutDialog::new();
 	let about_button: gtk::Button = builder.get_object("about-button").unwrap();
 	let translate_button: gtk::Button = builder.get_object("translate-button").unwrap();
-    let input_combo: gtk::ComboBoxText = builder.get_object("input-lang").unwrap();
+	let input_lang: gtk::ComboBoxText = builder.get_object("input-lang").unwrap();
+	let output_lang: gtk::ComboBoxText = builder.get_object("output-lang").unwrap();
 
 //	execute about_button function.
 	about_button.connect_clicked(move |_| {
