@@ -14,7 +14,6 @@ description = "A GTK wrapper for google translate"
 gtk = "^0"
 glib = "^0"
 gio = "^0"
-i18n = "^0"
 
 # [dependencies.glib]
 # version = "0.10.1"

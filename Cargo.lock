@@ -290,13 +290,7 @@ dependencies = [
  "gio 0.8.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "glib 0.9.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "gtk 0.8.1 (registry+https://github.com/rust-lang/crates.io-index)",
- "i18n 0.0.2 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
-
-[[package]]
-name = "i18n"
-version = "0.0.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
 name = "lazy_static"
@@ -414,7 +408,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 "checksum gobject-sys 0.9.1 (registry+https://github.com/rust-lang/crates.io-index)" = "31d1a804f62034eccf370006ccaef3708a71c31d561fee88564abe71177553d9"
 "checksum gtk 0.8.1 (registry+https://github.com/rust-lang/crates.io-index)" = "87e1e8d70290239c668594002d1b174fcc7d7ef5d26670ee141490ede8facf8f"
 "checksum gtk-sys 0.9.2 (registry+https://github.com/rust-lang/crates.io-index)" = "53def660c7b48b00b510c81ef2d2fbd3c570f1527081d8d7947f471513e1a4c1"
-"checksum i18n 0.0.2 (registry+https://github.com/rust-lang/crates.io-index)" = "165a395d75a05ff5503cc23e5f17231c46c821ffc7f599c7867619a1c16806c5"
 "checksum lazy_static 1.4.0 (registry+https://github.com/rust-lang/crates.io-index)" = "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646"
 "checksum libc 0.2.69 (registry+https://github.com/rust-lang/crates.io-index)" = "99e85c08494b21a9054e7fe1374a732aeadaff3980b6990b94bfd3a70f690005"
 "checksum pango 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)" = "1e9c6b728f1be8edb5f9f981420b651d5ea30bdb9de89f1f1262d0084a020577"

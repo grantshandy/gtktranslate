@@ -12,8 +12,8 @@
       <object class="GtkHeaderBar" id="header-bar">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="title" translatable="yes">Translate</property>
-        <property name="subtitle" translatable="yes">English -&gt; French</property>
+        <property name="title" translatable="yes">Translator</property>
+        <property name="subtitle" translatable="yes">Englsh -&gt; French</property>
         <property name="show_close_button">True</property>
         <child>
           <object class="GtkButton" id="translate-button">
@@ -22,9 +22,6 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
           </object>
-          <packing>
-            <property name="position">1</property>
-          </packing>
         </child>
         <child>
           <object class="GtkButton" id="about-button">
@@ -69,15 +66,26 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="output-label">
+              <object class="GtkComboBoxText" id="input-lang">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_top">5</property>
-                <property name="label" translatable="yes">Output</property>
+                <property name="valign">center</property>
+                <property name="margin_left">14</property>
+                <property name="margin_right">16</property>
+                <property name="margin_bottom">5</property>
+                <property name="active">0</property>
+                <property name="tearoff_title" translatable="yes">Not Functional</property>
+                <items>
+                  <item translatable="yes">N/A</item>
+                  <item translatable="yes">English</item>
+                  <item translatable="yes">Spanish</item>
+                  <item translatable="yes">French</item>
+                  <item translatable="yes">Italian</item>
+                </items>
               </object>
               <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">1</property>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
               </packing>
             </child>
             <child>
@@ -87,6 +95,7 @@
                 <property name="margin_bottom">13</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
+                <property name="wrap_mode">word</property>
                 <property name="left_margin">10</property>
                 <property name="right_margin">10</property>
                 <property name="top_margin">10</property>
@@ -106,6 +115,7 @@
                 <property name="margin_top">12</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
+                <property name="wrap_mode">word</property>
                 <property name="left_margin">10</property>
                 <property name="right_margin">10</property>
                 <property name="top_margin">10</property>
@@ -139,26 +149,15 @@
               </packing>
             </child>
             <child>
-              <object class="GtkComboBoxText" id="input-lang">
+              <object class="GtkLabel" id="output-label">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="valign">center</property>
-                <property name="margin_left">14</property>
-                <property name="margin_right">16</property>
-                <property name="margin_bottom">5</property>
-                <property name="active">0</property>
-                <property name="tearoff_title" translatable="yes">Not Functional</property>
-                <items>
-                  <item translatable="yes">N/A</item>
-                  <item translatable="yes">English</item>
-                  <item translatable="yes">Spanish</item>
-                  <item translatable="yes">French</item>
-                  <item translatable="yes">Italian</item>
-                </items>
+                <property name="margin_top">5</property>
+                <property name="label" translatable="yes">Output</property>
               </object>
               <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">0</property>
+                <property name="left_attach">0</property>
+                <property name="top_attach">1</property>
               </packing>
             </child>
           </object>
@@ -166,6 +165,34 @@
             <property name="expand">True</property>
             <property name="fill">True</property>
             <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkCheckButton" id="verbose-button">
+                <property name="label" translatable="yes">Verbose</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="draw_indicator">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
           </packing>
         </child>
       </object>
