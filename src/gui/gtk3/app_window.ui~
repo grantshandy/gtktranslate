@@ -13,7 +13,7 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="title" translatable="yes">Translate</property>
-        <property name="has_subtitle">False</property>
+        <property name="subtitle" translatable="yes">English -&gt; French</property>
         <property name="show_close_button">True</property>
         <child>
           <object class="GtkButton" id="translate-button">
@@ -21,6 +21,19 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+          </object>
+          <packing>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="about-button">
+            <property name="label">gtk-about</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_stock">True</property>
+            <property name="always_show_image">True</property>
           </object>
           <packing>
             <property name="position">1</property>
@@ -113,11 +126,11 @@
                 <property name="margin_top">5</property>
                 <property name="active">0</property>
                 <items>
+                  <item translatable="yes">N/A</item>
                   <item translatable="yes">English</item>
                   <item translatable="yes">French</item>
                   <item translatable="yes">Spanish</item>
                   <item translatable="yes">Italian</item>
-                  <item translatable="yes">N/A</item>
                 </items>
               </object>
               <packing>
@@ -136,11 +149,11 @@
                 <property name="active">0</property>
                 <property name="tearoff_title" translatable="yes">Not Functional</property>
                 <items>
+                  <item translatable="yes">N/A</item>
                   <item translatable="yes">English</item>
                   <item translatable="yes">Spanish</item>
                   <item translatable="yes">French</item>
                   <item translatable="yes">Italian</item>
-                  <item translatable="yes">N/A</item>
                 </items>
               </object>
               <packing>
@@ -154,9 +167,6 @@
             <property name="fill">True</property>
             <property name="position">0</property>
           </packing>
-        </child>
-        <child>
-          <placeholder/>
         </child>
       </object>
     </child>

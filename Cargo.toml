@@ -11,7 +11,15 @@ description = "A GTK wrapper for google translate"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+gtk = "^0"
+glib = "^0"
+gio = "^0"
+i18n = "^0"
 
-[dependencies.gtk]
-version = "0.8.0"
-features = ["v3_16"]
+# [dependencies.glib]
+# version = "0.10.1"
+# features = ["v
+
+# [dependencies.gtk]
+# version = "0.8.0"
+# features = ["v3_16"]
