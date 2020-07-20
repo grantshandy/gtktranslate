@@ -3,6 +3,7 @@ use std::process::Command;
 use std::str;
 use gtk::AboutDialog;
 use gtk::License::Gpl30;
+use glib_sys::g_free;
 
 pub fn launch() {
 	gtk::init().unwrap_or_else(|_| panic!("GTK could not start!"));
@@ -24,7 +25,7 @@ pub fn launch() {
 		about_window.set_website_label(Some("gtktranslate"));
 		about_window.set_website(Some("https://skylinecc.github.io"));
 		about_window.set_website_label(Some("Skyline Coding Club Website"));
-        about_window.set_comments(Some("A GTK3 Google Translate Wrapper"));
+    	about_window.set_comments(Some("A GTK3 Google Translate Wrapper"));
 		about_window.set_copyright(Some("Copyright © 2020 Skyline Coding Club"));
 		about_window.set_license_type(Gpl30);
 		about_window.set_wrap_license(false);
@@ -40,30 +41,53 @@ pub fn launch() {
 	});
 
 //	execute translate_button function.
-	        translate_button.connect_clicked(move |_| {
+	translate_button.connect_clicked(move |_| {
         
-//	Unwrap input buffer and do some utf-8 coding gymnastics. Seriously, this is stupid, don't do this.
+//		Unwrap input buffer and do some utf-8 coding gymnastics. Seriously, this is stupid, don't do this.
 		let mut inputtext: gtk::TextView = builder.get_object("input-text").unwrap();
 		let mut inputbuffer: gtk::TextBuffer = inputtext.get_buffer().unwrap();
 		let (start,end) = inputbuffer.get_bounds();
 		let text = inputbuffer.get_text(&start,&end,false).unwrap();
 		let input = text.as_str();
         
-//	Import "trans" command for translations, and make it brief.
-		let mut command = Command::new("/usr/bin/trans");
+//	    	Import "trans" command for translations, and make it brief.
+		let mut command = Command::new("gawk -f <(curl -Ls git.io/translate)");
 		let mut cmd = &mut command;
 	        cmd = cmd.arg("-b");
 
-//	Set source and destination languages. For now they are set in the source code, but I am working on getting the drop down boxes working.
-		let source_language = "en";
-		let destination_language = "fr";
+//		Get Input and Output Languages from ComboBox.
+        	let mut active_input = input_lang.get_active_text().unwrap();
+        	let mut active_input_str = active_input.as_str();
 
-//	If the source and destination languages are entered, set them as parameters to "trans".
+		let mut active_output = output_lang.get_active_text().unwrap();
+		let mut active_output_str = active_output.as_str();	
+
+//		Convert fancy input and output names into simple 2 letter names
+		
+		let mut source_language = "";
+		let mut destination_language"";
+
+		if active_input_str == "English" {
+			let mut source_language = "en";
+			println!("source language: English");
+		};
+       	
+      		if active_output_str == "French" {
+			let mut destination_language = "fr";
+			println!("Destination language set: French");
+		};
+       	
+       	if active_output_str == "Spanish" {
+			let mut destination_language = "es";
+			println!("Destination language set: Spanish");
+		};
+
+//	    	If the source and destination languages are entered, set them as parameters to "trans".
 		if !source_language.is_empty() && !destination_language.is_empty() {
 			cmd = cmd.arg(format!("{}:{}", source_language, destination_language));
 		}
         
-//	Do more utf-8 coding gymnastics just to get our output from "trans" back into the output text box.
+//	    	Do more utf-8 coding gymnastics just to get our output from "trans" back into the output text box.
 		let command = cmd.arg(input);
 		let output = cmd.output().unwrap().stdout;
 		let output = str::from_utf8(&output).unwrap();
@@ -71,8 +95,8 @@ pub fn launch() {
 		let mut outputbuffer: gtk::TextBuffer = outputtext.get_buffer().unwrap();
 		outputbuffer.set_text(output);
        
-//	Print our input -> output into the console.
-		println!("{} -> {}", input, output);
+//	    	Print our input -> output into the console.
+		println!("{} -> {}", input, output);       	
 
 	});
 

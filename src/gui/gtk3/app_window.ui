@@ -76,7 +76,7 @@
                 <property name="active">0</property>
                 <property name="tearoff_title" translatable="yes">Not Functional</property>
                 <items>
-                  <item translatable="yes">N/A</item>
+                  <item translatable="yes">Detect Language</item>
                   <item translatable="yes">English</item>
                   <item translatable="yes">Spanish</item>
                   <item translatable="yes">French</item>
@@ -95,7 +95,7 @@
                 <property name="margin_bottom">13</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
-                <property name="wrap_mode">word</property>
+                <property name="wrap_mode">word-char</property>
                 <property name="left_margin">10</property>
                 <property name="right_margin">10</property>
                 <property name="top_margin">10</property>
@@ -115,7 +115,8 @@
                 <property name="margin_top">12</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
-                <property name="wrap_mode">word</property>
+                <property name="editable">False</property>
+                <property name="wrap_mode">word-char</property>
                 <property name="left_margin">10</property>
                 <property name="right_margin">10</property>
                 <property name="top_margin">10</property>
@@ -136,7 +137,6 @@
                 <property name="margin_top">5</property>
                 <property name="active">0</property>
                 <items>
-                  <item translatable="yes">N/A</item>
                   <item translatable="yes">English</item>
                   <item translatable="yes">French</item>
                   <item translatable="yes">Spanish</item>
