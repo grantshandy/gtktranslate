@@ -45,7 +45,7 @@ pub fn launch() {
 	
 	
 //	Execute translate_button function.
-        translate_button.connect_clicked(move |_| {
+    translate_button.connect_clicked(move |_| {
         
         let mut inputtext: gtk::TextView = builder.get_object("input-text").unwrap();
         let mut inputbuffer: gtk::TextBuffer = inputtext.get_buffer().unwrap();
@@ -57,12 +57,12 @@ pub fn launch() {
         let mut cmd = &mut command;
         cmd = cmd.arg("--no-ansi");
 
-	let source_language = "en";
-        let destination_language = "es";
+	    let source_language = "en";
+        let destination_language = "fr";
 	
-	if !verbose_button.get_active() {
+	    if !verbose_button.get_active() {
 	        cmd = cmd.arg("-b")
-	}
+	    }
 
         if !source_language.is_empty() && !destination_language.is_empty() {
             cmd = cmd.arg(format!("{}:{}", source_language, destination_language));
@@ -74,15 +74,6 @@ pub fn launch() {
         let mut outputtext: gtk::TextView = builder.get_object("output-text").unwrap();
         let mut outputbuffer: gtk::TextBuffer = outputtext.get_buffer().unwrap();
 	
-//	outputtext.scroll_to_mark(
-//		&self,
-//		mark: &p,
-//		within_margin: f64,
-//		use_align: bool,
-//		xalign: f64
-//		yalign: f64
-//	);
-
         outputbuffer.set_text(output);
 
         dbg!(output);
