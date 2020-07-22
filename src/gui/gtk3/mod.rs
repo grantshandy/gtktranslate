@@ -67,26 +67,37 @@ pub fn launch() {
 
 //	Execute translate_button function.
 	translate_button.connect_clicked(move |_| {
-        
+
+//		Get input from input-text
 		let mut inputtext: gtk::TextView = builder.get_object("input-text").unwrap();
 		let mut inputbuffer: gtk::TextBuffer = inputtext.get_buffer().unwrap();
 		let (start,end) = inputbuffer.get_bounds();
 		let text = inputbuffer.get_text(&start,&end,false).unwrap();
-		let text_str = text.as_str();
-        
+		let input = text.as_str();
+
+//		Import and start the trans command with its arguments.
 		let mut cmd = Command::new("/usr/bin/trans");
 		let mut cmd = &mut cmd;
 		cmd = cmd.arg("--no-ansi");
 		
+		if !verbose_button.get_active() {
+			cmd = cmd.arg("-b")
+		}
+		
+//		Set the input and output languages!
+//		Import active input and output text.
 		let mut active_input = input_lang_box.get_active_text().unwrap();
 		let mut active_output = output_lang_box.get_active_text().unwrap();
 
+//		Convert active inputs and outputs to str.
 		let mut active_input_str = active_input.as_str();
 		let mut active_output_str = active_output.as_str();
-		
+
+//		Set default languages when starting.
 		let mut input_lang_code = "";
 		let mut output_lang_code = "en";
-		
+
+//		Convert active inputs to lang_codes.
 		match lang_codes.get(active_output_str) {
  			Some(code) => output_lang_code = code,
 			None => println!("{} has no code.", active_output_str)
@@ -95,24 +106,20 @@ pub fn launch() {
 			Some(code) => input_lang_code = code,
 			None => println!("{} has no code.", active_input_str)
 		}
-        
-		println!("{} -> {}", input_lang_code, output_lang_code);
-
-		if !verbose_button.get_active() {
-			cmd = cmd.arg("-b")
-		}
-
+		
 		if !input_lang_code.is_empty() && !output_lang_code.is_empty() {
 			cmd = cmd.arg(format!("{}:{}", input_lang_code, output_lang_code));
 		}
-        
-	        let cmd = cmd.arg(text_str);
+		
+	        let cmd = cmd.arg(input);
 	        let output = cmd.output().unwrap().stdout;
 	        let output = str::from_utf8(&output).unwrap();
 	        let mut outputtext: gtk::TextView = builder.get_object("output-text").unwrap();
 	        let mut outputbuffer: gtk::TextBuffer = outputtext.get_buffer().unwrap();
 	        
 	        outputbuffer.set_text(output);
+	        
+	        println!("({}) {} -> ({}) {}", input_lang_code, input, output_lang_code, output);
     	});
 
 	main_window.show_all();
