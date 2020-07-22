@@ -46,3 +46,14 @@ uninstall:
 	rm -f /usr/share/icons/Adwaita/256x256/apps/gtktranslate.png
 	rm -f /usr/share/icons/Adwaita/512x512/apps/gtktranslate.png
 	rm -f /usr/share/icons/Adwaita/scalable/apps/gtktranslate.svg
+	rm -f /usr/share/icons/hicolor/16x16/apps/gtktranslate.svg
+	rm -f /usr/share/icons/hicolor/22x22/apps/gtktranslate.svg
+	rm -f /usr/share/icons/hicolor/24x24/apps/gtktranslate.svg
+	rm -f /usr/share/icons/hicolor/32x32/apps/gtktranslate.svg
+	rm -f /usr/share/icons/hicolor/48x48/apps/gtktranslate.svg
+	rm -f /usr/share/icons/hicolor/64x64/apps/gtktranslate.svg
+	rm -f /usr/share/icons/hicolor/96x96/apps/gtktranslate.svg
+	rm -f /usr/share/icons/hicolor/256x256/apps/gtktranslate.svg
+	rm -f /usr/share/icons/hicolor/512x512/apps/gtktranslate.svg
+	rm -f /usr/share/icons/hicolor/scalable/apps/gtktranslate.svg
+
