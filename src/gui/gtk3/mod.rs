@@ -20,13 +20,22 @@ pub fn launch() {
 	let about_button: gtk::Button = builder.get_object("about-button").unwrap();
 	let verbose_button: gtk::ToggleButton = builder.get_object("verbose-button").unwrap();
 	let header_bar: gtk::HeaderBar = builder.get_object("header-bar").unwrap();
-
+	
 	let mut input_lang_box: gtk::ComboBoxText = builder.get_object("input-lang").unwrap();
-//	let mut output_lang_box: gtk::ComboBoxText = builder.get_object("output-lang").unwrap();
+	let mut output_lang_box: gtk::ComboBoxText = builder.get_object("output-lang").unwrap();
+	
+
+
+	let mut lang_codes = HashMap::new();
+	lang_codes.insert("English", "en");
+	lang_codes.insert("French", "fr");
+	lang_codes.insert("Italian", "it");
+	lang_codes.insert("Spanish", "es");
+	lang_codes.insert("Detect", "");
 
 //  Set header bar settings.
-    header_bar.set_has_subtitle(true);
-    header_bar.set_subtitle(Some("This is a test subtitle!"));
+	header_bar.set_has_subtitle(true);
+	header_bar.set_subtitle(Some("This is a test subtitle!"));
 
 //	Execute about_button function.
 	about_button.connect_clicked(move |_| {
@@ -55,9 +64,7 @@ pub fn launch() {
 		]);
     		about_window.show_all();
 	});
-	
-	
-	
+
 //	Execute translate_button function.
 	translate_button.connect_clicked(move |_| {
         
@@ -72,24 +79,24 @@ pub fn launch() {
 		cmd = cmd.arg("--no-ansi");
 		
 		let mut active_input = input_lang_box.get_active_text().unwrap();
-//		let mut active_output = output_lang_box.get_active_text().unwrap();
+		let mut active_output = output_lang_box.get_active_text().unwrap();
 
 		let mut active_input_str = active_input.as_str();
-//		let mut active_output_str = active_output.as_str();
-
-//		println!("{}", active_input_str);
-
+		let mut active_output_str = active_output.as_str();
+		
 		let mut input_lang_code = "";
 		let mut output_lang_code = "en";
-
-		match active_input_str {
-			"English" => println!("English"),
-			"French" => println!("French"),
-			"Italian" => println!("Italian"),
-			"Spanish" => println!("Spanish"),
-			"Detect" => println!("Detect Language"),
-			_ => println!("No Value"),
-		};
+		
+		match lang_codes.get(active_output_str) {
+ 			Some(code) => output_lang_code = code,
+			None => println!("{} has no code.", active_output_str)
+		}
+		match lang_codes.get(active_input_str) {
+			Some(code) => input_lang_code = code,
+			None => println!("{} has no code.", active_input_str)
+		}
+        
+		println!("{} -> {}", input_lang_code, output_lang_code);
 
 		if !verbose_button.get_active() {
 			cmd = cmd.arg("-b")
