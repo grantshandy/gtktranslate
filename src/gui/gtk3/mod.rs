@@ -1,9 +1,9 @@
 use gtk::prelude::*;
-use std::process::Command;
 use std::str;
 use gtk::AboutDialog;
 use gtk::License::Gpl30;
 use gtk::Inhibit;
+use std::process::Command;
 
 #[allow(unused_mut)]
 
@@ -33,12 +33,20 @@ pub fn launch() {
 		about_window.set_title("About gtktranslate");
 		about_window.set_authors(&[
 			"Grant Handy",
-			"Nicholas Zhang",
-			"Aditya Suresh",
+		]);
+       	about_window.add_credit_section(&"Club Members", &[
+       		"Nicholas Zhang",
+			"Ethan Suresh",
 			"Alex Ikeda",
 			"Evan Ikeda",
+            "Corrine Wang",
+            "Miguel Oyarzun",
+            "Grant Handy",
+            "Michael Donnely",
+            "Ayush Ranjan",
+            "Alex Rose",
+
 		]);
-	
     		about_window.show_all();
 	});
 	
@@ -53,22 +61,22 @@ pub fn launch() {
         let text = inputbuffer.get_text(&start,&end,false).unwrap();
         let text_str = text.as_str();
         
-        let mut command = Command::new("/usr/bin/trans");
-        let mut cmd = &mut command;
+        let mut cmd = Command::new("/usr/bin/trans");
+        let mut cmd = &mut cmd;
         cmd = cmd.arg("--no-ansi");
 
-	    let source_language = "en";
+	let source_language = "en";
         let destination_language = "fr";
 	
-	    if !verbose_button.get_active() {
-	        cmd = cmd.arg("-b")
-	    }
+	if !verbose_button.get_active() {
+		cmd = cmd.arg("-b")
+	}
 
         if !source_language.is_empty() && !destination_language.is_empty() {
             cmd = cmd.arg(format!("{}:{}", source_language, destination_language));
         }
         
-        let command = cmd.arg(text_str);
+        let cmd = cmd.arg(text_str);
         let output = cmd.output().unwrap().stdout;
         let output = str::from_utf8(&output).unwrap();
         let mut outputtext: gtk::TextView = builder.get_object("output-text").unwrap();
