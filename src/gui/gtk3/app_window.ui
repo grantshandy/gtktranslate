@@ -7,7 +7,7 @@
     <property name="default_width">688</property>
     <property name="default_height">494</property>
     <property name="hide_titlebar_when_maximized">True</property>
-    <property name="icon_name">format-text-italic</property>
+    <property name="icon">../../../docs/icon.svg</property>
     <child type="titlebar">
       <object class="GtkHeaderBar" id="header-bar">
         <property name="visible">True</property>
