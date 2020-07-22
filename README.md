@@ -9,7 +9,7 @@
 <h1 align="center">Building from Source</h1>
 <h3 align="left">Dependencies</h3>
 <code>
-libgtk-3-dev cargo make pkg-config
+translate-shell libgtk-3-dev cargo
 </code>
 <h3 align="left">Building</h3>
 <p>Building is fairly simple, just:</p>
