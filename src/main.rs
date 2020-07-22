@@ -1,4 +1,5 @@
 extern crate gtk;
+extern crate glib;
 
 mod gui {
 	pub mod gtk3;
