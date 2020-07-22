@@ -8,15 +8,15 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   inkscape:export-ydpi="472.61542"
-   inkscape:export-xdpi="472.61542"
+   inkscape:export-ydpi="472.26129"
+   inkscape:export-xdpi="472.26129"
    inkscape:export-filename="/home/grant/Documents/gtktranslate/icons/512x512/gtktranslate.png"
    width="128"
    height="128"
    id="svg11300"
    sodipodi:version="0.32"
    inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   sodipodi:docname="icon.svg"
+   sodipodi:docname="gtktranslate.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    version="1.0"
    style="display:inline;enable-background:new"
@@ -110,16 +110,16 @@
      borderopacity="0.25490196"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="3.6681164"
-     inkscape:cx="44.398728"
-     inkscape:cy="47.592664"
-     inkscape:current-layer="layer13"
+     inkscape:zoom="3.8503649"
+     inkscape:cx="48.887377"
+     inkscape:cy="69.715137"
+     inkscape:current-layer="layer11"
      showgrid="false"
      inkscape:grid-bbox="true"
      inkscape:document-units="px"
      inkscape:showpageshadow="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1043"
+     inkscape:window-width="1366"
+     inkscape:window-height="704"
      inkscape:window-x="0"
      inkscape:window-y="0"
      width="400px"
@@ -360,6 +360,32 @@
   </metadata>
   <g
      inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:label="Left Square Shadow"
+     style="display:inline">
+    <rect
+       style="display:inline;opacity:1;fill:#9a9996;fill-rule:evenodd;stroke:#9a9996;stroke-width:1.85645;enable-background:new"
+       id="rect181-3-3"
+       width="65.616226"
+       height="65.617172"
+       x="49.455547"
+       y="49.735863"
+       ry="8.6995478" />
+    <rect
+       ry="8.6995478"
+       y="17.448017"
+       x="12.928223"
+       height="65.617172"
+       width="65.616226"
+       id="rect181-6"
+       style="display:inline;opacity:1;fill:#1a5fb4;fill-rule:evenodd;stroke:#1a5fb4;stroke-width:1.85645;enable-background:new" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Right Square Shadow" />
+  <g
+     inkscape:groupmode="layer"
      id="layer10"
      inkscape:label="Left Square"
      style="display:inline">
@@ -380,14 +406,32 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:65.0454px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:3.08072;enable-background:new"
-       x="19.606462"
-       y="68.517952"
+       x="19.606461"
+       y="64.79921"
        id="text1733"><tspan
          sodipodi:role="line"
          id="tspan1731"
-         x="19.606462"
-         y="68.517952"
+         x="19.606461"
+         y="64.79921"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:65.0454px;font-family:FreeSans;-inkscape-font-specification:'FreeSans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:3.08072">G</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Left Arrow Shadow"
+     style="display:inline">
+    <path
+       inkscape:transform-center-y="17.812963"
+       inkscape:transform-center-x="17.626487"
+       sodipodi:nodetypes="cc"
+       d="M 63.999999,100.28126 C 44.47355,100.28127 28.746803,84.720149 28.746803,65.193698"
+       style="display:inline;opacity:1;fill:#9a9996;fill-opacity:0;stroke:#9a9996;stroke-width:16.154;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;enable-background:new"
+       id="path245-7-7" />
+    <path
+       style="display:inline;fill:#9a9996;fill-opacity:1;stroke:#9a9996;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;enable-background:new"
+       d="M 40.797606,69.441609 H 17.198956 L 28.297906,56.70419 Z"
+       id="path1713-7-5"
+       sodipodi:nodetypes="cccc" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -396,7 +440,7 @@
      style="display:inline">
     <rect
        ry="8.6995478"
-       y="49.454601"
+       y="45.735863"
        x="49.455547"
        height="65.617172"
        width="65.616226"
@@ -411,14 +455,14 @@
     <path
        id="path245-7"
        style="display:inline;opacity:1;fill:#f0ffff;fill-opacity:0;stroke:#deddda;stroke-width:16.154;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;enable-background:new"
-       d="M 63.999951,99.357623 C 44.473502,99.357624 28.746755,83.796506 28.746755,64.270057"
+       d="M 63.99995,95.638883 C 44.473501,95.638884 28.746754,80.077766 28.746754,60.551317"
        sodipodi:nodetypes="cc"
        inkscape:transform-center-x="17.626487"
        inkscape:transform-center-y="17.812963" />
     <path
        sodipodi:nodetypes="cccc"
        id="path1713-7"
-       d="M 40.797558,68.517966 H 17.198908 L 28.297858,55.78055 Z"
+       d="M 40.797557,64.799226 H 17.198907 L 28.297857,52.06181 Z"
        style="display:inline;fill:#deddda;fill-opacity:1;stroke:#deddda;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;enable-background:new" />
   </g>
   <g
@@ -430,14 +474,43 @@
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:77.2685px;line-height:1.25;font-family:sans-serif;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.93171;enable-background:new"
        x="56.004978"
-       y="102.58787"
+       y="98.922981"
        id="text1740"
        transform="scale(0.98551743,1.0146954)"><tspan
          sodipodi:role="line"
          id="tspan1738"
          x="56.004978"
-         y="102.58787"
+         y="98.922981"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:56.6634px;font-family:FreeSans;-inkscape-font-specification:'FreeSans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:1.93171">张</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="Right Arrow Shadow">
+    <path
+       id="path245-7-2-3"
+       style="display:inline;opacity:1;fill:#1a5fb4;fill-opacity:0;stroke:#1a5fb4;stroke-width:15.4858;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;enable-background:new"
+       d="m 67.531795,28.563525 c 17.944536,-10e-7 31.5314,15.194176 31.5314,34.720624"
+       sodipodi:nodetypes="cc" />
+    <path
+       sodipodi:nodetypes="cccc"
+       id="path1713-5"
+       d="M 87.120305,60.068595 H 110.71896 L 99.620015,72.806011 Z"
+       style="display:inline;fill:#1a5fb4;fill-opacity:1;stroke:#1a5fb4;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;enable-background:new" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="Mask"
+     style="display:inline">
+    <rect
+       style="display:inline;fill:#1c71d8;fill-rule:evenodd;stroke:#1c71d8;stroke-width:9.4892;enable-background:new"
+       id="rect145"
+       width="4.2920604"
+       height="9.0327482"
+       x="70.431976"
+       y="26.682667"
+       ry="0" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -446,12 +519,12 @@
      style="display:inline">
     <path
        sodipodi:nodetypes="cc"
-       d="m 64.941871,29.011074 c 19.52644,-1e-6 34.311051,15.194175 34.311051,34.720623"
+       d="m 64.94187,25.292334 c 19.52644,-1e-6 34.311051,15.194175 34.311051,34.720623"
        style="display:inline;opacity:1;fill:#1c71d8;fill-opacity:0;stroke:#1c71d8;stroke-width:16.154;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;enable-background:new"
        id="path245-7-2" />
     <path
        style="fill:#1c71d8;fill-opacity:1;stroke:#1c71d8;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 87.310038,60.516143 H 110.90869 L 99.809742,73.253559 Z"
+       d="M 87.310037,56.797403 H 110.90869 L 99.809741,69.534819 Z"
        id="path1713"
        sodipodi:nodetypes="cccc" />
   </g>
