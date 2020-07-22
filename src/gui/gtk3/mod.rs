@@ -20,6 +20,12 @@ pub fn launch() {
 	let verbose_button: gtk::ToggleButton = builder.get_object("verbose-button").unwrap();
     let header_bar: gtk::HeaderBar = builder.get_object("header-bar").unwrap();
 
+    let mut input_lang_box: gtk::ComboBoxText = builder.get_object("input-lang").unwrap();
+    let mut output_lang_box: gtk::ComboBoxText = builder.get_object("output-lang").unwrap();
+
+    let mut active_input = input_lang_box.get_active_text().unwrap();
+    let mut active_output = output_lang_box.get_active_text().unwrap();
+
 //  Set header bar settings.
     header_bar.set_has_subtitle(true);
     header_bar.set_subtitle(Some("This is a test subtitle!"));
@@ -70,15 +76,15 @@ pub fn launch() {
         let mut cmd = &mut cmd;
         cmd = cmd.arg("--no-ansi");
 
-        let source_language = "en";
-        let destination_language = "fr";
+        let input_lang_code = "en";
+        let output_lang_code = "fr";
 	
         if !verbose_button.get_active() {
 		    cmd = cmd.arg("-b")
 	    }
 
-        if !source_language.is_empty() && !destination_language.is_empty() {
-            cmd = cmd.arg(format!("{}:{}", source_language, destination_language));
+        if !input_lang_code.is_empty() && !output_lang_code.is_empty() {
+            cmd = cmd.arg(format!("{}:{}", input_lang_code, output_lang_code));
         }
         
         let cmd = cmd.arg(text_str);
