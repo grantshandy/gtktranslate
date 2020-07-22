@@ -18,7 +18,12 @@ pub fn launch() {
 	let translate_button: gtk::Button = builder.get_object("translate-button").unwrap();
 	let about_button: gtk::Button = builder.get_object("about-button").unwrap();
 	let verbose_button: gtk::ToggleButton = builder.get_object("verbose-button").unwrap();
-	
+    let header_bar: gtk::HeaderBar = builder.get_object("header-bar").unwrap();
+
+//  Set header bar settings.
+    header_bar.set_has_subtitle(true);
+    header_bar.set_subtitle(Some("This is a test subtitle!"));
+
 //	Execute about_button function.
 	about_button.connect_clicked(move |_| {
 		println!("Starting About Dialog");
@@ -65,12 +70,12 @@ pub fn launch() {
         let mut cmd = &mut cmd;
         cmd = cmd.arg("--no-ansi");
 
-	let source_language = "en";
+        let source_language = "en";
         let destination_language = "fr";
 	
-	if !verbose_button.get_active() {
-		cmd = cmd.arg("-b")
-	}
+        if !verbose_button.get_active() {
+		    cmd = cmd.arg("-b")
+	    }
 
         if !source_language.is_empty() && !destination_language.is_empty() {
             cmd = cmd.arg(format!("{}:{}", source_language, destination_language));
@@ -85,7 +90,7 @@ pub fn launch() {
         outputbuffer.set_text(output);
 
         dbg!(output);
-    	});
+    });
 
 	main_window.show_all();
 
