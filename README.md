@@ -14,7 +14,6 @@ translate-shell libgtk-3-dev cargo
 <h3 align="left">Building</h3>
 <p>Building is fairly simple, just:</p>
 <code>
-$ make
-
-\# make install
+git clone https://github.com/skylinecc/gtktranslate
+cd gtktranslate && cargo install --path
 </code>
