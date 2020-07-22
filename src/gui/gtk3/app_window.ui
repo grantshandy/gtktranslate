@@ -75,10 +75,10 @@
                 <property name="margin_top">5</property>
                 <property name="active">0</property>
                 <items>
-                  <item translatable="yes">English</item>
-                  <item translatable="yes">French</item>
-                  <item translatable="yes">Spanish</item>
-                  <item translatable="yes">Italian</item>
+                  <item id="english" translatable="yes">English</item>
+                  <item id="french" translatable="yes">French</item>
+                  <item id="spanish" translatable="yes">Spanish</item>
+                  <item id="italian" translatable="yes">Italian</item>
                 </items>
               </object>
               <packing>
@@ -141,11 +141,11 @@
                 <property name="active">0</property>
                 <property name="tearoff_title" translatable="yes">Not Functional</property>
                 <items>
-                  <item translatable="yes">Detect Language</item>
-                  <item translatable="yes">English</item>
-                  <item translatable="yes">Spanish</item>
-                  <item translatable="yes">French</item>
-                  <item translatable="yes">Italian</item>
+                  <item id="detect" translatable="yes">Detect</item>
+                  <item id="english" translatable="yes">English</item>
+                  <item id="spanish" translatable="yes">Spanish</item>
+                  <item id="french" translatable="yes">French</item>
+                  <item id="italian" translatable="yes">Italian</item>
                 </items>
               </object>
               <packing>
@@ -154,12 +154,13 @@
               </packing>
             </child>
             <child>
-              <object class="GtkScrolledWindow">
+              <object class="GtkScrolledWindow" id="input-scrollbar">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="margin_bottom">13</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
+                <property name="hscrollbar_policy">never</property>
                 <property name="shadow_type">in</property>
                 <child>
                   <object class="GtkTextView" id="input-text">

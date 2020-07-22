@@ -4,6 +4,7 @@ use gtk::AboutDialog;
 use gtk::License::Gpl30;
 use gtk::Inhibit;
 use std::process::Command;
+use std::collections::HashMap;
 
 #[allow(unused_mut)]
 
@@ -18,13 +19,10 @@ pub fn launch() {
 	let translate_button: gtk::Button = builder.get_object("translate-button").unwrap();
 	let about_button: gtk::Button = builder.get_object("about-button").unwrap();
 	let verbose_button: gtk::ToggleButton = builder.get_object("verbose-button").unwrap();
-    let header_bar: gtk::HeaderBar = builder.get_object("header-bar").unwrap();
+	let header_bar: gtk::HeaderBar = builder.get_object("header-bar").unwrap();
 
-    let mut input_lang_box: gtk::ComboBoxText = builder.get_object("input-lang").unwrap();
-    let mut output_lang_box: gtk::ComboBoxText = builder.get_object("output-lang").unwrap();
-
-    let mut active_input = input_lang_box.get_active_text().unwrap();
-    let mut active_output = output_lang_box.get_active_text().unwrap();
+	let mut input_lang_box: gtk::ComboBoxText = builder.get_object("input-lang").unwrap();
+//	let mut output_lang_box: gtk::ComboBoxText = builder.get_object("output-lang").unwrap();
 
 //  Set header bar settings.
     header_bar.set_has_subtitle(true);
@@ -42,21 +40,18 @@ pub fn launch() {
 		about_window.set_license_type(Gpl30);
 		about_window.set_wrap_license(false);
 		about_window.set_title("About gtktranslate");
-		about_window.set_authors(&[
-			"Grant Handy",
-		]);
+		about_window.set_authors(&["Grant Handy"]);
        	about_window.add_credit_section(&"Club Members", &[
        		"Nicholas Zhang",
 			"Ethan Suresh",
 			"Alex Ikeda",
 			"Evan Ikeda",
-            "Corrine Wang",
-            "Miguel Oyarzun",
-            "Grant Handy",
-            "Michael Donnely",
-            "Ayush Ranjan",
-            "Alex Rose",
-
+			"Corrine Wang",
+			"Miguel Oyarzun",
+			"Grant Handy",
+			"Michael Donnely",
+			"Ayush Ranjan",
+			"Alex Rose",
 		]);
     		about_window.show_all();
 	});
@@ -64,39 +59,54 @@ pub fn launch() {
 	
 	
 //	Execute translate_button function.
-    translate_button.connect_clicked(move |_| {
+	translate_button.connect_clicked(move |_| {
         
-        let mut inputtext: gtk::TextView = builder.get_object("input-text").unwrap();
-        let mut inputbuffer: gtk::TextBuffer = inputtext.get_buffer().unwrap();
-        let (start,end) = inputbuffer.get_bounds();
-        let text = inputbuffer.get_text(&start,&end,false).unwrap();
-        let text_str = text.as_str();
+		let mut inputtext: gtk::TextView = builder.get_object("input-text").unwrap();
+		let mut inputbuffer: gtk::TextBuffer = inputtext.get_buffer().unwrap();
+		let (start,end) = inputbuffer.get_bounds();
+		let text = inputbuffer.get_text(&start,&end,false).unwrap();
+		let text_str = text.as_str();
         
-        let mut cmd = Command::new("/usr/bin/trans");
-        let mut cmd = &mut cmd;
-        cmd = cmd.arg("--no-ansi");
+		let mut cmd = Command::new("/usr/bin/trans");
+		let mut cmd = &mut cmd;
+		cmd = cmd.arg("--no-ansi");
+		
+		let mut active_input = input_lang_box.get_active_text().unwrap();
+//		let mut active_output = output_lang_box.get_active_text().unwrap();
 
-        let input_lang_code = "en";
-        let output_lang_code = "fr";
-	
-        if !verbose_button.get_active() {
-		    cmd = cmd.arg("-b")
-	    }
+		let mut active_input_str = active_input.as_str();
+//		let mut active_output_str = active_output.as_str();
 
-        if !input_lang_code.is_empty() && !output_lang_code.is_empty() {
-            cmd = cmd.arg(format!("{}:{}", input_lang_code, output_lang_code));
-        }
+//		println!("{}", active_input_str);
+
+		let mut input_lang_code = "";
+		let mut output_lang_code = "en";
+
+		match active_input_str {
+			"English" => println!("English"),
+			"French" => println!("French"),
+			"Italian" => println!("Italian"),
+			"Spanish" => println!("Spanish"),
+			"Detect" => println!("Detect Language"),
+			_ => println!("No Value"),
+		};
+
+		if !verbose_button.get_active() {
+			cmd = cmd.arg("-b")
+		}
+
+		if !input_lang_code.is_empty() && !output_lang_code.is_empty() {
+			cmd = cmd.arg(format!("{}:{}", input_lang_code, output_lang_code));
+		}
         
-        let cmd = cmd.arg(text_str);
-        let output = cmd.output().unwrap().stdout;
-        let output = str::from_utf8(&output).unwrap();
-        let mut outputtext: gtk::TextView = builder.get_object("output-text").unwrap();
-        let mut outputbuffer: gtk::TextBuffer = outputtext.get_buffer().unwrap();
-	
-        outputbuffer.set_text(output);
-
-        dbg!(output);
-    });
+	        let cmd = cmd.arg(text_str);
+	        let output = cmd.output().unwrap().stdout;
+	        let output = str::from_utf8(&output).unwrap();
+	        let mut outputtext: gtk::TextView = builder.get_object("output-text").unwrap();
+	        let mut outputbuffer: gtk::TextBuffer = outputtext.get_buffer().unwrap();
+	        
+	        outputbuffer.set_text(output);
+    	});
 
 	main_window.show_all();
 
