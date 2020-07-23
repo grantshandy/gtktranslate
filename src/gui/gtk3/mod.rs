@@ -62,7 +62,7 @@ pub fn launch() {
 			"Ayush Ranjan",
 			"Alex Rose",
 		]);
-    		about_window.show_all();
+        about_window.show_all();
 	});
 
 //	Execute translate_button function.
@@ -111,18 +111,18 @@ pub fn launch() {
 			cmd = cmd.arg(format!("{}:{}", input_lang_code, output_lang_code));
 		}
 		
-	        let cmd = cmd.arg(input);
-	        let output = cmd.output().unwrap().stdout;
-	        let output = str::from_utf8(&output).unwrap();
-	        let mut outputtext: gtk::TextView = builder.get_object("output-text").unwrap();
-	        let mut outputbuffer: gtk::TextBuffer = outputtext.get_buffer().unwrap();
+	    let cmd = cmd.arg(input);
+	    let output = cmd.output().unwrap().stdout;
+	    let output = str::from_utf8(&output).unwrap();
+	    let mut outputtext: gtk::TextView = builder.get_object("output-text").unwrap();
+	    let mut outputbuffer: gtk::TextBuffer = outputtext.get_buffer().unwrap();
 	        
-	        outputbuffer.set_text(output);
+	    outputbuffer.set_text(output);
 	        
-	        println!("({}) {} -> ({}) {}", input_lang_code, input, output_lang_code, output);
-    	});
+	    println!("({}) {} -> ({}) {}", input_lang_code, input, output_lang_code, output);
+    });
 
-	main_window.show_all();
+    main_window.show_all();
 
 	//... and to kill the event...
 
