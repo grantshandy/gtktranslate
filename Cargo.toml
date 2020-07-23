@@ -1,6 +1,6 @@
 [package]
 name = "gtktranslate"
-version = "0.1.5"
+version = "0.2.0"
 authors = ["Defunct Lizard <grantshandy@gmail.com>"]
 edition = "2018"
 readme = "README.md"
@@ -15,7 +15,6 @@ gtk = "^0"
 glib-sys = "^0"
 gio = "^0"
 glib = "^0"
-cargo-i18n = "0.1.10"
 
 # [dependencies.glib]
 # version = "0.10.1"
