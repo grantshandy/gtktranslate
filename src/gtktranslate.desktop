@@ -6,5 +6,5 @@ Exec=/usr/bin/gtktranslate
 Terminal=false
 X-MultipleArgs=false
 Type=Application
-Icon=/usr/share/icons/hicolor/scalable/apps/gtktranslate.svg
+Icon=org.skylinecc.GtkTranslate
 Categories=Network;Office;Education;

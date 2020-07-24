@@ -8,15 +8,15 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   inkscape:export-ydpi="472.26129"
-   inkscape:export-xdpi="472.26129"
-   inkscape:export-filename="/home/grant/Documents/gtktranslate/icons/512x512/gtktranslate.png"
+   inkscape:export-ydpi="384"
+   inkscape:export-xdpi="384"
+   inkscape:export-filename="/home/grant/Documents/gtktranslate/icons/512x512/org.skylinecc.GtkTranslate.png"
    width="128"
    height="128"
    id="svg11300"
    sodipodi:version="0.32"
    inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   sodipodi:docname="gtktranslate.svg"
+   sodipodi:docname="org.skylinecc.GtkTranslate.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    version="1.0"
    style="display:inline;enable-background:new"
@@ -110,16 +110,16 @@
      borderopacity="0.25490196"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="3.8503649"
-     inkscape:cx="48.887377"
-     inkscape:cy="69.715137"
-     inkscape:current-layer="layer11"
+     inkscape:zoom="5.4452383"
+     inkscape:cx="22.373601"
+     inkscape:cy="52.544216"
+     inkscape:current-layer="layer6"
      showgrid="false"
      inkscape:grid-bbox="true"
      inkscape:document-units="px"
      inkscape:showpageshadow="false"
-     inkscape:window-width="1366"
-     inkscape:window-height="704"
+     inkscape:window-width="1920"
+     inkscape:window-height="1043"
      inkscape:window-x="0"
      inkscape:window-y="0"
      width="400px"
@@ -360,6 +360,23 @@
   </metadata>
   <g
      inkscape:groupmode="layer"
+     id="layer6"
+     inkscape:label="Back Shadows">
+    <path
+       inkscape:transform-center-y="17.057738"
+       inkscape:transform-center-x="21.093993"
+       sodipodi:nodetypes="cc"
+       d="M 71.818166,102.04869 C 48.450448,102.04871 29.629912,87.147333 29.629912,68.448753"
+       style="display:inline;opacity:1;fill:#9a9996;fill-opacity:0;stroke:#9a9996;stroke-width:17.2928;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;enable-background:new"
+       id="path245-7-7" />
+    <path
+       id="path245-7-2-3"
+       style="display:inline;opacity:1;fill:#1a5fb4;fill-opacity:0;stroke:#1a5fb4;stroke-width:8.1336;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;enable-background:new"
+       d="m 69.930079,33.837753 c 11.575892,0 20.340685,6.497599 20.340685,14.847839"
+       sodipodi:nodetypes="cc" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
      id="layer1"
      inkscape:label="Left Square Shadow"
      style="display:inline">
@@ -373,8 +390,8 @@
        ry="8.6995478" />
     <rect
        ry="8.6995478"
-       y="17.448017"
-       x="12.928223"
+       y="16.927279"
+       x="12.647911"
        height="65.617172"
        width="65.616226"
        id="rect181-6"
@@ -406,33 +423,20 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:65.0454px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:3.08072;enable-background:new"
-       x="19.606461"
-       y="64.79921"
+       x="20.868038"
+       y="68.448753"
        id="text1733"><tspan
          sodipodi:role="line"
          id="tspan1731"
-         x="19.606461"
-         y="64.79921"
+         x="20.868038"
+         y="68.448753"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:65.0454px;font-family:FreeSans;-inkscape-font-specification:'FreeSans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:3.08072">G</tspan></text>
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer3"
      inkscape:label="Left Arrow Shadow"
-     style="display:inline">
-    <path
-       inkscape:transform-center-y="17.812963"
-       inkscape:transform-center-x="17.626487"
-       sodipodi:nodetypes="cc"
-       d="M 63.999999,100.28126 C 44.47355,100.28127 28.746803,84.720149 28.746803,65.193698"
-       style="display:inline;opacity:1;fill:#9a9996;fill-opacity:0;stroke:#9a9996;stroke-width:16.154;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;enable-background:new"
-       id="path245-7-7" />
-    <path
-       style="display:inline;fill:#9a9996;fill-opacity:1;stroke:#9a9996;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;enable-background:new"
-       d="M 40.797606,69.441609 H 17.198956 L 28.297906,56.70419 Z"
-       id="path1713-7-5"
-       sodipodi:nodetypes="cccc" />
-  </g>
+     style="display:inline" />
   <g
      inkscape:groupmode="layer"
      id="layer11"
@@ -486,32 +490,12 @@
   <g
      inkscape:groupmode="layer"
      id="layer4"
-     inkscape:label="Right Arrow Shadow">
-    <path
-       id="path245-7-2-3"
-       style="display:inline;opacity:1;fill:#1a5fb4;fill-opacity:0;stroke:#1a5fb4;stroke-width:15.4858;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;enable-background:new"
-       d="m 67.531795,28.563525 c 17.944536,-10e-7 31.5314,15.194176 31.5314,34.720624"
-       sodipodi:nodetypes="cc" />
-    <path
-       sodipodi:nodetypes="cccc"
-       id="path1713-5"
-       d="M 87.120305,60.068595 H 110.71896 L 99.620015,72.806011 Z"
-       style="display:inline;fill:#1a5fb4;fill-opacity:1;stroke:#1a5fb4;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;enable-background:new" />
-  </g>
+     inkscape:label="Right Arrow Shadow" />
   <g
      inkscape:groupmode="layer"
      id="layer5"
      inkscape:label="Mask"
-     style="display:inline">
-    <rect
-       style="display:inline;fill:#1c71d8;fill-rule:evenodd;stroke:#1c71d8;stroke-width:9.4892;enable-background:new"
-       id="rect145"
-       width="4.2920604"
-       height="9.0327482"
-       x="70.431976"
-       y="26.682667"
-       ry="0" />
-  </g>
+     style="display:inline" />
   <g
      inkscape:groupmode="layer"
      id="layer13"
@@ -519,8 +503,8 @@
      style="display:inline">
     <path
        sodipodi:nodetypes="cc"
-       d="m 64.94187,25.292334 c 19.52644,-1e-6 34.311051,15.194175 34.311051,34.720623"
-       style="display:inline;opacity:1;fill:#1c71d8;fill-opacity:0;stroke:#1c71d8;stroke-width:16.154;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;enable-background:new"
+       d="m 68.161933,25.178331 c 17.962524,-1e-6 31.563003,15.324201 31.563003,35.017749"
+       style="display:inline;opacity:1;fill:#1c71d8;fill-opacity:0;stroke:#1c71d8;stroke-width:15.5597;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;enable-background:new"
        id="path245-7-2" />
     <path
        style="fill:#1c71d8;fill-opacity:1;stroke:#1c71d8;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"

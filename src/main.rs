@@ -13,7 +13,7 @@ use std::collections::HashMap;
 
 fn main() {
 	println!("Starting GUI...");
-	launch();
+launch();
 }
 
 pub fn launch() {
@@ -32,22 +32,24 @@ pub fn launch() {
 	let mut input_lang_box: gtk::ComboBoxText = builder.get_object("input-lang").unwrap();
 	let mut output_lang_box: gtk::ComboBoxText = builder.get_object("output-lang").unwrap();
 	
-
-
+//Set header bar settings.
+	header_bar.set_has_subtitle(true);
+	header_bar.set_title(Some("Translator"));
+	header_bar.set_subtitle(Some("Detect -> English"));
+	
 	let mut lang_codes = HashMap::new();
 	lang_codes.insert("English", "en");
 	lang_codes.insert("French", "fr");
 	lang_codes.insert("Italian", "it");
 	lang_codes.insert("Spanish", "es");
 	lang_codes.insert("Detect", "");
-
-//  Set header bar settings.
-	header_bar.set_has_subtitle(true);
-	header_bar.set_subtitle(Some("This is a test subtitle!"));
+	
+	if let Some(theme) = gtk::IconTheme::get_default() {
+		theme.add_resource_path("/usr/share/icons/hicolor/apps/scalable/gtktranslate.svg");
+	}
 
 //	Execute about_button function.
 	about_button.connect_clicked(move |_| {
-		println!("Starting About Dialog");
 		let about_window = AboutDialog::new();
 		about_window.set_website_label(Some("gtktranslate"));
 		about_window.set_website(Some("https://github.com/skylinecc/gtktranslate"));
@@ -57,9 +59,10 @@ pub fn launch() {
 		about_window.set_license_type(Gpl30);
 		about_window.set_wrap_license(false);
 		about_window.set_title("About gtktranslate");
+		about_window.set_logo_icon_name(Some("org.skylinecc.GtkTranslate"));
 		about_window.set_authors(&["Grant Handy"]);
-       	about_window.add_credit_section(&"Club Members", &[
-       		"Nicholas Zhang",
+		about_window.add_credit_section(&"Club Members", &[
+			"Nicholas Zhang",
 			"Ethan Suresh",
 			"Alex Ikeda",
 			"Evan Ikeda",
@@ -68,9 +71,8 @@ pub fn launch() {
 			"Grant Handy",
 			"Michael Donnely",
 			"Ayush Ranjan",
-			"Alex Rose",
-		]);
-        about_window.show_all();
+			"Alex Rose",]);
+		about_window.show_all();
 	});
 
 //	Execute translate_button function.
@@ -107,9 +109,10 @@ pub fn launch() {
 
 //		Convert active inputs to lang_codes.
 		match lang_codes.get(active_output_str) {
- 			Some(code) => output_lang_code = code,
+			Some(code) => output_lang_code = code,
 			None => println!("{} has no code.", active_output_str)
 		}
+		
 		match lang_codes.get(active_input_str) {
 			Some(code) => input_lang_code = code,
 			None => println!("{} has no code.", active_input_str)
@@ -119,25 +122,28 @@ pub fn launch() {
 			cmd = cmd.arg(format!("{}:{}", input_lang_code, output_lang_code));
 		}
 		
-	    	let cmd = cmd.arg(input);
-	    	let output = cmd.output().unwrap().stdout;
-	    	let output = str::from_utf8(&output).unwrap();
-	    	let mut outputtext: gtk::TextView = builder.get_object("output-text").unwrap();
-	    	let mut outputbuffer: gtk::TextBuffer = outputtext.get_buffer().unwrap();
+		let cmd = cmd.arg(input);
+		let output = cmd.output().unwrap().stdout;
+		let output = str::from_utf8(&output).unwrap();
+		let mut outputtext: gtk::TextView = builder.get_object("output-text").unwrap();
+		let mut outputbuffer: gtk::TextBuffer = outputtext.get_buffer().unwrap();
+        
+		outputbuffer.set_text(output);
 	        
-	    	outputbuffer.set_text(output);
-	        
-	    	println!("({}) {} -> ({}) {}", input_lang_code, input, output_lang_code, output);
-    });
+		println!("({}) {} -> ({}) {}", input_lang_code, input, output_lang_code, output);
+		
+		let mut subtitle = ("{} => {}", input_lang_code, output_lang_code);
+//		header_bar.set_subtitle(Some(subtitle));
+	});
 
-    main_window.show_all();
+	main_window.show_all();
 
 	//... and to kill the event...
 
 	main_window.connect_delete_event(|_, _| {
 		gtk::main_quit();
 		Inhibit(false)
-    	});
-    
+	});
+
 	gtk::main();
 }
