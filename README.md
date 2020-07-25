@@ -11,7 +11,7 @@ Debian/Ubuntu
 sudo apt install translate-shell cargo
 ```
 
-gtktranslate is on [crates.io](crates.io), so you can install it from the terminal using [cargo](https://github.com/rust-lang/cargo/)
+gtktranslate is on [crates.io](https://crates.io), so you can install it from the terminal using [cargo](https://github.com/rust-lang/cargo/)
 
 ```
   cargo install gtktranslate
