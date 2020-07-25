@@ -6,5 +6,5 @@ Exec=/usr/bin/gtktranslate
 Terminal=false
 X-MultipleArgs=false
 Type=Application
-Icon=org.skylinecc.GtkTranslate
+Icon=gtktranslate
 Categories=Network;Office;Education;
