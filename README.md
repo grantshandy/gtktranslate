@@ -2,14 +2,22 @@
 <p align="center">A Simple GTK Translator</p>
 <p align="center"><img src="https://raw.githubusercontent.com/skylinecc/gtktranslate/master/docs/screenshot.png" alt="Screenshot"></p>
 
-## Installing</h1>
+## Installing
+
+### Dependencies
+Debian/Ubuntu
+
+```
+sudo apt install translate-shell cargo
+```
+
 gtktranslate is on [crates.io](crates.io), so you can install it from the terminal using [cargo](https://github.com/rust-lang/cargo/)
 
 ```
   cargo install gtktranslate
 ```
 
-## Building from Source</h1>
+## Building from Source
 Building from source is very simple, just basic cargo building.
 
 ### Dependencies
