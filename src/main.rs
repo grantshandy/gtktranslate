@@ -21,7 +21,7 @@ pub fn launch() {
 
 //	Import app_window.ui and set the app_window as main window.
 	let builder = gtk::Builder::new_from_string(include_str!("app_window.ui"));
-	let main_window: gtk::Window = builder.get_object("app_window").unwrap();
+	let main_window: gtk::Window = builder.get_object("app-window").unwrap();
 
 //	Import translate, about and verbose buttons from builder.
 	let translate_button: gtk::Button = builder.get_object("translate-button").unwrap();
@@ -31,8 +31,6 @@ pub fn launch() {
 	
 	let mut input_lang_box: gtk::ComboBoxText = builder.get_object("input-lang").unwrap();
 	let mut output_lang_box: gtk::ComboBoxText = builder.get_object("output-lang").unwrap();
-	
-
 
 	let mut lang_codes = HashMap::new();
 	lang_codes.insert("English", "en");
@@ -41,8 +39,9 @@ pub fn launch() {
 	lang_codes.insert("Spanish", "es");
 	lang_codes.insert("Detect", "");
 
-//  Set header bar settings.
+//	Set header bar settings.
 	header_bar.set_has_subtitle(true);
+	header_bar.set_title(Some("Translator"));
 	header_bar.set_subtitle(Some("This is a test subtitle!"));
 
 //	Execute about_button function.
@@ -56,6 +55,7 @@ pub fn launch() {
 		about_window.set_copyright(Some("Copyright © 2020 Skyline Coding Club"));
 		about_window.set_license_type(Gpl30);
 		about_window.set_wrap_license(false);
+		about_window.set_logo_icon_name(Some("gtktranslate"));
 		about_window.set_title("About gtktranslate");
 		about_window.set_authors(&["Grant Handy"]);
        	about_window.add_credit_section(&"Club Members", &[
@@ -70,7 +70,7 @@ pub fn launch() {
 			"Ayush Ranjan",
 			"Alex Rose",
 		]);
-        about_window.show_all();
+        	about_window.show_all();
 	});
 
 //	Execute translate_button function.
