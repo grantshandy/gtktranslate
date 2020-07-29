@@ -32,7 +32,7 @@ pub fn launch() {
 	let mut input_lang_box: gtk::ComboBoxText = builder.get_object("input-lang").unwrap();
 	let mut output_lang_box: gtk::ComboBoxText = builder.get_object("output-lang").unwrap();
 
-	let mut lang_codes = HashMap::new();
+let mut lang_codes = HashMap::new();
 	lang_codes.insert("English", "en");
 	lang_codes.insert("French", "fr");
 	lang_codes.insert("Italian", "it");
@@ -40,9 +40,8 @@ pub fn launch() {
 	lang_codes.insert("Detect", "");
 
 //	Set header bar settings.
-	header_bar.set_has_subtitle(true);
+	header_bar.set_has_subtitle(false);
 	header_bar.set_title(Some("Translator"));
-	header_bar.set_subtitle(Some("This is a test subtitle!"));
 
 //	Execute about_button function.
 	about_button.connect_clicked(move |_| {

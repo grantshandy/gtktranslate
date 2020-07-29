@@ -285,7 +285,7 @@ dependencies = [
 
 [[package]]
 name = "gtktranslate"
-version = "0.2.0"
+version = "0.2.5"
 dependencies = [
  "gio 0.8.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "glib 0.9.3 (registry+https://github.com/rust-lang/crates.io-index)",

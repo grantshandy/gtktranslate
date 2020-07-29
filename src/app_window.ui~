@@ -28,12 +28,12 @@
         </child>
         <child>
           <object class="GtkButton" id="properties-button">
-            <property name="label">gtk-properties</property>
+            <property name="label">Properties</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="relief">none</property>
-            <property name="use_stock">True</property>
+            <property name="use_underline">True</property>
           </object>
           <packing>
             <property name="expand">True</property>
