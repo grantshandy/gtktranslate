@@ -8,13 +8,13 @@
 Debian/Ubuntu
 
 ```
-sudo apt install translate-shell cargo
+# apt install translate-shell cargo
 ```
 
 gtktranslate is on [crates.io](https://crates.io), so you can install it from the terminal using [cargo](https://github.com/rust-lang/cargo/)
 
 ```
-  cargo install gtktranslate
+$ cargo install gtktranslate
 ```
 
 ## Building from Source
@@ -24,13 +24,13 @@ Building from source is very simple, just basic cargo building.
 Debian/Ubuntu:
 
 ```
-sudo apt translate-shell libgtk-3-dev cargo
+# apt translate-shell libgtk-3-dev cargo
 ```
 
 ### Building
 Building is fairly simple, just:
 
 ```
-git clone https://github.com/skylinecc/gtktranslate
-cd gtktranslate && cargo install --path
+$ git clone https://github.com/skylinecc/gtktranslate
+# cd gtktranslate && make && make install
 ```
