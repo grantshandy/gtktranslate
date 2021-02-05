@@ -1,5 +1,5 @@
 <h1><b>GTKTRANSLATE HAS BEEN ARCHIVED!</b></h1>
-Why? Well because it was poorly written, implemented, and executed. If you are looking to use the google translate service on Linux with a native application I reccomend [dialect](https://github.com/gi-lom/dialect) which does all this could and even more.
+Why? Well because it was poorly written, implemented, and executed. If you are looking to use the google translate service on Linux with a native application I reccomend https://github.com/gi-lom/dialect which does all this could and even more.
 
 This program was really my first entry into Rust, and it has horrible structure and a poor understanding of how programs should be written. I'm thinking of writing something similar to this, but using [libretranslate](https://libretranslate.com/) for the backend instead.
 
