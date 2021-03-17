@@ -1,5 +1,5 @@
 make:
-	cargo build
+	cargo build --release
 
 install:
 	cp -f target/debug/gtktranslate /usr/bin/

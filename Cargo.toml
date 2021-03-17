@@ -1,25 +1,15 @@
 [package]
-name = "gtktranslate"
-version = "0.2.5"
-authors = ["Defunct Lizard <grantshandy@gmail.com>"]
+name = "libretranslate-gui"
+version = "0.1.0"
+authors = ["Grant Handy <grantshandy@gmail.com>"]
 edition = "2018"
 readme = "README.md"
 license-file = "LICENSE"
-keywords = ["google", "translate", "language", "gtk"]
-description = "A GTK wrapper for google translate"
+keywords = ["libretranslate", "translate", "language", "gtk"]
+description = "A GTK wrapper for libretranslate"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-gtk = "^0"
-glib-sys = "^0"
-gio = "^0"
-glib = "^0"
-
-# [dependencies.glib]
-# version = "0.10.1"
-# features = ["v
-
-# [dependencies.gtk]
-# version = "0.8.0"
-# features = ["v3_16"]
+gtk = { git = "https://github.com/gtk-rs/gtk4-rs/", package = "gtk4" }
+libretranslate = "0.2.0"
