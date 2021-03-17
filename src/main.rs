@@ -25,6 +25,14 @@ impl Window {
         let window: gtk::ApplicationWindow = builder.get_object("window").expect("Couldn't get window");
         window.set_application(Some(application));
 
+        let source_text: gtk::TextView = builder.get_object("source_text").expect("Couldn't get source_text");
+        let source_buffer: gtk::TextBuffer = source_text.get_buffer();
+        source_text.set_editable(true);
+        source_text.set_left_margin(6);
+        source_text.set_can_focus(true);
+
+        let target_text: gtk::TextView = builder.get_object("target_text").expect("Couldn't get target_text");
+
 		Self {
 			window,
 		}
