@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <object class="GtkApplicationWindow" id="window">
-    <property name="can-focus">0</property>
-    <property name="title" translatable="yes">Translator</property>
+    <property name="title" translatable="yes">Libretranslate</property>
     <property name="default-width">640</property>
     <property name="default-height">480</property>
     <child>
@@ -68,7 +67,12 @@
           <property name="hexpand">True</property>
           <property name="vexpand">True</property>
           <child>
-            <object class="GtkTextView" id="source_text"/>
+            <object class="GtkTextView" id="source_text">
+              <property name="right_margin">6</property>
+              <property name="left_margin">6</property>
+              <property name="top_margin">6</property>
+              <property name="bottom_margin">6</property>
+            </object>          
           </child>
           <layout>
             <property name="column">1</property>
@@ -81,7 +85,13 @@
           <property name="hexpand">True</property>
           <property name="vexpand">True</property>
           <child>
-            <object class="GtkTextView" id="target_text"/>
+            <object class="GtkTextView" id="target_text">
+              <property name="right_margin">6</property>
+              <property name="left_margin">6</property>
+              <property name="top_margin">6</property>
+              <property name="bottom_margin">6</property>
+              <property name="editable">False</property>
+            </object>
           </child>
           <layout>
             <property name="column">1</property>

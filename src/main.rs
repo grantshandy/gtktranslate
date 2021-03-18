@@ -34,6 +34,7 @@ impl Window {
         let target_text: gtk::TextView = builder
             .get_object("target_text")
             .expect("Couldn't get target_text");
+            
         let translate_button: gtk::Button = builder
             .get_object("translate_button")
             .expect("Couldn't get translate_button");
