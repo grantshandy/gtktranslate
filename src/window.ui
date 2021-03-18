@@ -2,118 +2,118 @@
 <interface>
   <object class="GtkApplicationWindow" id="window">
     <property name="can-focus">0</property>
-    <property name="title" translatable="yes">Libretranslate</property>
+    <property name="title" translatable="yes">Translator</property>
     <property name="default-width">640</property>
     <property name="default-height">480</property>
     <child>
       <object class="GtkGrid" id="window_frame">
-        <property name="margin-start">12</property>
-        <property name="margin-end">12</property>
-        <property name="margin-top">12</property>
-        <property name="margin-bottom">12</property>
-        <child>
-          <object class="GtkComboBoxText" id="source_combo_box">
-            <items>
-              <item translatable="yes" id="en">English</item>
-              <item translatable="yes" id="ar">Arabic</item>
-              <item translatable="yes" id="zh">Chinese</item>
-              <item translatable="yes" id="fr">French</item>
-              <item translatable="yes" id="de">German</item>
-              <item translatable="yes" id="it">Italian</item>
-              <item translatable="yes" id="ja">Japanese</item>
-              <item translatable="yes" id="pt">Portuguese</item>
-              <item translatable="yes" id="ru">Russian</item>
-              <item translatable="yes" id="es">Spanish</item>
-            </items>
-            <property name="can-focus">0</property>
-            <property name="hexpand">0</property>
-            <property name="vexpand">0</property>
-            <property name="halign">center</property>
-            <property name="valign">center</property>
-            <property name="margin-end">12</property>
-            <layout>
-              <property name="column">0</property>
-              <property name="row">0</property>
-            </layout>
-          </object>
-        </child>
-        <child>
-          <object class="GtkComboBoxText" id="target_combo_box">
-            <items>
-              <item translatable="yes" id="en">English</item>
-              <item translatable="yes" id="ar">Arabic</item>
-              <item translatable="yes" id="zh">Chinese</item>
-              <item translatable="yes" id="fr">French</item>
-              <item translatable="yes" id="de">German</item>
-              <item translatable="yes" id="it">Italian</item>
-              <item translatable="yes" id="ja">Japanese</item>
-              <item translatable="yes" id="pt">Portuguese</item>
-              <item translatable="yes" id="ru">Russian</item>
-              <item translatable="yes" id="es">Spanish</item>
-            </items>
-            <property name="can-focus">0</property>
-            <property name="hexpand">0</property>
-            <property name="vexpand">0</property>
-            <property name="halign">center</property>
-            <property name="valign">center</property>
-            <property name="margin-end">12</property>
-            <layout>
-              <property name="column">0</property>
-              <property name="row">1</property>
-            </layout>
-          </object>
-        </child>
-        <child>
-          <object class="GtkScrolledWindow" id="source_scrolled_window">
-            <property name="hexpand">1</property>
-            <property name="vexpand">1</property>
-            <property name="margin-bottom">6</property>
-            <layout>
-              <property name="column">1</property>
-              <property name="row">0</property>
-            </layout>
-            <child>
-              <object class="GtkTextView" id="source_text"/>
-            </child>
-          </object>
-        </child>
-        <child>
-          <object class="GtkScrolledWindow" id="target_scrolled_window">
-            <property name="hexpand">1</property>
-            <property name="vexpand">1</property>
-            <property name="margin-top">6</property>
-            <layout>
-              <property name="column">1</property>
-              <property name="row">1</property>
-            </layout>
-            <child>
-              <object class="GtkTextView" id="target_text">
-                <property name="can_focus">True</property>
-                <property name="visible">True</property>
-                <property name="left_margin">6</property>
-                <property name="right_margin">6</property>
-                <property name="top_margin">6</property>
-                <property name="bottom_margin">6</property>
-              </object>
-            </child>
-          </object>
-        </child>
-        <child>
-          <object class="GtkBox">
-            <property name="halign">end</property>
-            <property name="margin-top">12</property>
-            <layout>
-              <property name="column">1</property>
-              <property name="row">2</property>
-            </layout>
-            <child>
-              <object class="GtkButton" id="translate_button">
-                <property name="label" translatable="yes">Translate</property>
-                <property name="halign">end</property>
-              </object>
-            </child>
-          </object>
-        </child>
+      <property name="row-spacing">12</property>
+      <property name="column-spacing">12</property>
+      <property name="margin-start">12</property>
+      <property name="margin-end">12</property>
+      <property name="margin-top">12</property>
+      <property name="margin-bottom">12</property>
+      <child>
+        <object class="GtkComboBoxText" id="source_combo_box">
+          <items>
+            <item translatable="yes" id="en">English</item>
+            <item translatable="yes" id="ar">Arabic</item>
+            <item translatable="yes" id="zh">Chinese</item>
+            <item translatable="yes" id="fr">French</item>
+            <item translatable="yes" id="de">German</item>
+            <item translatable="yes" id="it">Italian</item>
+            <item translatable="yes" id="ja">Japanese</item>
+            <item translatable="yes" id="pt">Portuguese</item>
+            <item translatable="yes" id="ru">Russian</item>
+            <item translatable="yes" id="es">Spanish</item>
+          </items>
+          <property name="can-focus">0</property>
+          <property name="hexpand">0</property>
+          <property name="vexpand">0</property>
+          <property name="halign">center</property>
+          <property name="valign">center</property>
+          <layout>
+            <property name="column">0</property>
+            <property name="row">0</property>
+          </layout>
+        </object>
+      </child>
+      <child>
+        <object class="GtkComboBoxText" id="target_combo_box">
+          <items>
+            <item translatable="yes" id="en">English</item>
+            <item translatable="yes" id="ar">Arabic</item>
+            <item translatable="yes" id="zh">Chinese</item>
+            <item translatable="yes" id="fr">French</item>
+            <item translatable="yes" id="de">German</item>
+            <item translatable="yes" id="it">Italian</item>
+            <item translatable="yes" id="ja">Japanese</item>
+            <item translatable="yes" id="pt">Portuguese</item>
+            <item translatable="yes" id="ru">Russian</item>
+            <item translatable="yes" id="es">Spanish</item>
+          </items>
+          <property name="can-focus">0</property>
+          <property name="hexpand">0</property>
+          <property name="vexpand">0</property>
+          <property name="halign">center</property>
+          <property name="valign">center</property>
+          <layout>
+            <property name="column">0</property>
+            <property name="row">1</property>
+          </layout>
+        </object>
+      </child>
+      <child>
+        <object class="GtkScrolledWindow" id="source_scrolled_window">
+          <property name="hexpand">True</property>
+          <property name="vexpand">True</property>
+          <child>
+            <object class="GtkTextView" id="source_text"/>
+          </child>
+          <layout>
+            <property name="column">1</property>
+            <property name="row">0</property>
+          </layout>
+        </object>
+      </child>
+      <child>
+        <object class="GtkScrolledWindow" id="target_scrolled_window">
+          <property name="hexpand">True</property>
+          <property name="vexpand">True</property>
+          <child>
+            <object class="GtkTextView" id="target_text"/>
+          </child>
+          <layout>
+            <property name="column">1</property>
+            <property name="row">1</property>
+          </layout>
+        </object>
+      </child>
+      <child>
+        <object class="GtkBox">
+          <property name="halign">end</property>
+          <layout>
+            <property name="column">1</property>
+            <property name="row">2</property>
+          </layout>
+          <child>
+            <object class="GtkButton" id="translate_button">
+              <property name="label" translatable="yes">Translate</property>
+              <property name="halign">end</property>
+            </object>
+          </child>
+        </object>
+      </child>
+      <child>
+        <object class="GtkSpinner" id="loading_spinner">
+          <property name="halign">start</property>
+          <property name="valign">center</property>
+          <layout>
+            <property name="column">0</property>
+            <property name="row">2</property>
+          </layout>
+        </object>
+      </child>
       </object>
     </child>
   </object>
