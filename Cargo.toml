@@ -12,4 +12,4 @@ description = "A GTK wrapper for libretranslate"
 
 [dependencies]
 gtk = { git = "https://github.com/gtk-rs/gtk4-rs/", package = "gtk4" }
-libretranslate = "0.2.0"
+libretranslate = "0.2.4"
