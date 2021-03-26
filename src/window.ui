@@ -123,6 +123,7 @@
           <child>
             <object class="GtkButton" id="translate_button">
               <property name="label" translatable="yes">Translate</property>
+              <!-- <accelerator key="Return" signal="clicked" modifiers="GDK_CONTROL_MASK"/> -->
               <property name="halign">end</property>
             </object>
           </child>
@@ -148,5 +149,13 @@
     <property name="buttons">ok</property>
     <property name="text" translatable="yes">Unable to Connect to Translation Server</property>
     <property name="secondary-text" translatable="yes">Make sure you're connected to the internet.</property>
+  </object>
+  <object class="GtkMessageDialog" id="language_detection">
+    <property name="transient-for">window</property>
+    <property name="resizable">False</property>
+    <property name="modal">True</property>
+    <property name="buttons">ok</property>
+    <property name="text" translatable="yes">Unable to Detect Language</property>
+    <property name="secondary-text" translatable="yes">Make sure your text is well formatted, or select a language from the source box.</property>
   </object>
 </interface>

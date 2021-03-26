@@ -1,6 +1,6 @@
 use gtk::glib::{clone, MainContext};
 use gtk::prelude::*;
-use libretranslate::Language;
+use libretranslate::{Language, TranslateError};
 use std::env::args;
 
 
@@ -56,6 +56,13 @@ impl Window {
             d.hide();
         });
 
+        let language_detection_dialog: gtk::MessageDialog = builder
+        .get_object("language_detection")
+        .expect("Couldn't get language_detection dialog");
+        language_detection_dialog.connect_response(move |d: &gtk::MessageDialog, _: gtk::ResponseType| {
+            d.hide();
+        });
+
         let character_counter: gtk::Label = builder
         .get_object("character_counter")
         .expect("Couldn't get character_counter");
@@ -99,6 +106,7 @@ impl Window {
             @strong translate_button,
             @strong loading_spinner,
             @strong no_connection_dialog,
+            @strong language_detection_dialog,
             => move |_| {
             
             let source_text = source_text.clone();
@@ -107,6 +115,8 @@ impl Window {
             let source_combo_box = source_combo_box.clone();
             let target_combo_box = target_combo_box.clone();
             let loading_spinner = loading_spinner.clone();
+
+            let language_detection_dialog = language_detection_dialog.clone();
             let no_connection_dialog = no_connection_dialog.clone();
 
             let main_context = MainContext::default();
@@ -115,7 +125,7 @@ impl Window {
                 loading_spinner.start();
 
                 let (start,end) = source_text.get_buffer().get_bounds();
-                let input = source_text.get_buffer().get_text(&start, &end, false);
+                let input = source_text.get_buffer().get_text(&start, &end, false).to_string();
 
                 let source: Option<Language> = match source_combo_box.get_active_id().unwrap().as_str() {
                     "detect" => None,
@@ -127,12 +137,25 @@ impl Window {
                     None => Language::default(),
                 };
 
-                let output = match libretranslate::translate(source, target, input).await {
-                    Ok(output) => output.output,
-                    Err(_) => {
-                        no_connection_dialog.show();
-                        String::from("No connection")
-                    },
+                let output: String = match input.as_str() {
+                    "" => String::from(""),
+                    _ => match libretranslate::translate(source, target, input).await {
+                            Ok(output) => output.output,
+                            Err(error) => {
+                                match error {
+                                    TranslateError::DetectError => {
+                                        eprintln!("Language Detection Error");
+                                        language_detection_dialog.show();
+                                        String::from("")
+                                    }
+                                    _ => {
+                                        eprintln!("Error Connecting to Server");
+                                        no_connection_dialog.show();
+                                        String::from("")
+                                    }
+                                }
+                            },
+                    }
                 };
 
                 target_text.get_buffer().set_text(output.as_str());
