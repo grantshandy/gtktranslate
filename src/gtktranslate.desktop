@@ -1,10 +1,9 @@
 [Desktop Entry]
-Name=Libretranslate
+Name=Gtktranslate
 Comment=Use Libretranslate through a GTK interface.
 GenericName=Translator
 Exec=/usr/bin/gtktranslate
 Terminal=false
 X-MultipleArgs=false
 Type=Application
-Icon=gtktranslate
 Categories=Network;Office;Education;

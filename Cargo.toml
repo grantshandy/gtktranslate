@@ -1,10 +1,9 @@
 [package]
-name = "libretranslate-gui"
-version = "0.1.0"
+name = "gtktranslate"
+version = "0.3.0"
 authors = ["Grant Handy <grantshandy@gmail.com>"]
 edition = "2018"
-readme = "README.md"
-license-file = "LICENSE"
+license = "GPL-3.0"
 keywords = ["libretranslate", "translate", "language", "gtk"]
 description = "A GTK wrapper for libretranslate"
 
@@ -12,4 +11,4 @@ description = "A GTK wrapper for libretranslate"
 
 [dependencies]
 gtk = { git = "https://github.com/gtk-rs/gtk4-rs/", package = "gtk4" }
-libretranslate = "0.2.4"
+libretranslate = "0.2.7"

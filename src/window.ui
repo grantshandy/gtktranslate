@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <object class="GtkApplicationWindow" id="window">
-    <property name="title" translatable="yes">Libretranslate</property>
+    <property name="title" translatable="yes">Gtktranslate</property>
     <property name="default-width">640</property>
     <property name="default-height">480</property>
     <child>
@@ -15,6 +15,7 @@
       <child>
         <object class="GtkComboBoxText" id="source_combo_box">
           <items>
+            <item translatable="yes" id="detect">Detect</item>
             <item translatable="yes" id="en">English</item>
             <item translatable="yes" id="ar">Arabic</item>
             <item translatable="yes" id="zh">Chinese</item>
@@ -126,5 +127,13 @@
       </child>
       </object>
     </child>
+  </object>
+  <object class="GtkMessageDialog" id="no_connection">
+    <property name="transient-for">window</property>
+    <property name="resizable">False</property>
+    <property name="modal">True</property>
+    <property name="buttons">ok</property>
+    <property name="text" translatable="yes">Unable to Connect to Translation Server</property>
+    <property name="secondary-text" translatable="yes">Make sure you're connected to the internet.</property>
   </object>
 </interface>
