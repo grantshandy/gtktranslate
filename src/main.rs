@@ -27,7 +27,7 @@ impl Window {
         let builder = gtk::Builder::from_string(include_str!("window.ui"));
         let window: gtk::ApplicationWindow =
             builder.get_object("window").expect("Couldn't get window");
-        window.set_application(Some(application));
+        window.set_application(Some(application));   
 
         let source_scrolled_window: gtk::ScrolledWindow = builder
             .get_object("source_scrolled_window")
@@ -39,6 +39,27 @@ impl Window {
         .expect("Couldn't get target_scrolled_window");
         target_scrolled_window.set_policy(gtk::PolicyType::Never, gtk::PolicyType::Automatic);
 
+        let source_combo_box: gtk::ComboBox = builder
+            .get_object("source_combo_box")
+            .expect("Couldn't get source_combo_box");
+        source_combo_box.set_active_id(Some("detect"));
+
+        let target_combo_box: gtk::ComboBox = builder
+            .get_object("target_combo_box")
+            .expect("Couldn't get target_combo_box");
+        target_combo_box.set_active_id(Some(Language::default().as_code()));
+
+        let no_connection_dialog: gtk::MessageDialog = builder
+            .get_object("no_connection")
+            .expect("Couldn't get no_connection dialog");
+        no_connection_dialog.connect_response(move |d: &gtk::MessageDialog, _: gtk::ResponseType| {
+            d.hide();
+        });
+
+        let character_counter: gtk::Label = builder
+        .get_object("character_counter")
+        .expect("Couldn't get character_counter");
+        character_counter.set_text("0/5000");
 
         let source_text: gtk::TextView = builder
             .get_object("source_text")
@@ -49,29 +70,26 @@ impl Window {
             .expect("Couldn't get target_text");
         target_text.set_wrap_mode(gtk::WrapMode::Word);
 
-        let source_combo_box: gtk::ComboBox = builder
-            .get_object("source_combo_box")
-            .expect("Couldn't get source_combo_box");
-        let target_combo_box: gtk::ComboBox = builder
-            .get_object("target_combo_box")
-            .expect("Couldn't get target_combo_box");
+        source_text.get_buffer().connect_changed(clone!(@strong character_counter, @strong source_text => move |_| {
+            let (start,end) = source_text.get_buffer().get_bounds();
+            let text = source_text.get_buffer().get_text(&start, &end, false).to_string();
+            let count = text.chars().count();
 
-        source_combo_box.set_active_id(Some("detect"));
-        target_combo_box.set_active_id(Some(Language::default().as_code()));
+            character_counter.set_text(&format!("{}/5000", count));
 
-        let translate_button: gtk::Button = builder
-            .get_object("translate_button")
-            .expect("Couldn't get translate_button");
+            if count > 5000 {
+                character_counter.set_text("5000/5000");
+                let adjusted_text = &text[.. text.char_indices().nth(5000).map(|(i, _)| i).unwrap_or(text.len())];
+                source_text.get_buffer().set_text(adjusted_text);
+            };
+        }));
+
         let loading_spinner: gtk::Spinner = builder
             .get_object("loading_spinner")
             .expect("Couldn't get loading_spinner");
-        let no_connection_dialog: gtk::MessageDialog = builder
-            .get_object("no_connection")
-            .expect("Couldn't get no_connection dialog");
-        
-        no_connection_dialog.connect_response(move |d: &gtk::MessageDialog, _: gtk::ResponseType| {
-            d.hide();
-        });
+        let translate_button: gtk::Button = builder
+            .get_object("translate_button")
+            .expect("Couldn't get translate_button");
 
         translate_button.connect_clicked(clone!(
             @strong source_text, 
