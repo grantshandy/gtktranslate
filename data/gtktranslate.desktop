@@ -3,6 +3,7 @@ Name=Gtktranslate
 Comment=Use Libretranslate through a GTK interface.
 GenericName=Translator
 Exec=/usr/bin/gtktranslate
+Icon=gtktranslate
 Terminal=false
 X-MultipleArgs=false
 Type=Application
