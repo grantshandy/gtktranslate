@@ -27,6 +27,7 @@ impl Window {
         let window: gtk::ApplicationWindow =
             builder.get_object("window").expect("Couldn't get window");
         window.set_application(Some(application));
+        window.set_icon_name(Some("gtktranslate"));
 
         let source_scrolled_window: gtk::ScrolledWindow = builder
             .get_object("source_scrolled_window")

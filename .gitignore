@@ -1,2 +1,6 @@
 /target
 /Cargo.lock
+/pkg
+/src/gtktranslate
+/gtktranslate
+/*.tar.zst

@@ -2,7 +2,7 @@
 
 _pkgname='gtktranslate'
 pkgname=${_pkgname}-git
-pkgver=0.1.7.r10.gf35da86
+pkgver=0.3.0.r2.g780116c
 pkgrel=1
 pkgdesc="A Simple GTK Translator Using Libretranslate"
 arch=('x86_64')
