@@ -4,3 +4,4 @@
 /src/gtktranslate
 /gtktranslate
 /*.tar.zst
+Cargo.lock
