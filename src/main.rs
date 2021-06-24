@@ -1,177 +1,124 @@
-use gtk::glib::{clone, MainContext};
+use gtk::gio;
 use gtk::prelude::*;
-use libretranslate::{Language, TranslateError};
-use std::env::args;
 
 fn main() {
-    // Create a new application
-    let app = gtk::Application::new(Some("com.DefunctLizard.Gtktranslate"), Default::default())
-        .expect("Application Initialization failed...");
-
-    app.connect_activate(|app| {
-        let window = Window::new(app);
+    let application = gtk::Application::new(
+        Some("com.github.gtk-rs.examples.search_bar"),
+        Default::default(),
+    );
+    application.connect_activate(move |application| {
+        let window = GtkTranslateWindow::init(application);
         window.window.present();
     });
-
-    println!("Launching GUI...");
-    app.run(&args().collect::<Vec<_>>());
+    application.run();
 }
 
-struct Window {
+#[derive(Clone)]
+struct GtkTranslateWindow {
+    application: gtk::Application,
     pub window: gtk::ApplicationWindow,
+    key: &'static str,
 }
 
-impl Window {
-    pub fn new(application: &gtk::Application) -> Self {
-        let builder = gtk::Builder::from_string(include_str!("window.ui"));
-        let window: gtk::ApplicationWindow =
-            builder.get_object("window").expect("Couldn't get window");
-        window.set_application(Some(application));
-        window.set_icon_name(Some("gtktranslate"));
+impl GtkTranslateWindow {
+    pub fn init(application: &gtk::Application) -> Self {
+        let window = gtk::ApplicationWindow::new(application);
+        window.set_default_size(700, 500);
+        window.set_title(Some("gtktranslate"));
+        window.set_titlebar(Some(&Self::header_bar()));
 
-        let source_scrolled_window: gtk::ScrolledWindow = builder
-            .get_object("source_scrolled_window")
-            .expect("Couldn't get source_scrolled_window");
+        let key = "";
 
-        source_scrolled_window.set_policy(gtk::PolicyType::Never, gtk::PolicyType::Automatic);
+        let myself = Self {
+            application: application.clone(),
+            window,
+            key,
+        };
 
-        let target_scrolled_window: gtk::ScrolledWindow = builder
-            .get_object("target_scrolled_window")
-            .expect("Couldn't get target_scrolled_window");
+        myself.actions();
+        myself.build_content();
 
-        target_scrolled_window.set_policy(gtk::PolicyType::Never, gtk::PolicyType::Automatic);
+        return myself;
+    }
 
-        let source_combo_box: gtk::ComboBox = builder
-            .get_object("source_combo_box")
-            .expect("Couldn't get source_combo_box");
+    fn build_content(&self) {
+        let grid = gtk::Grid::builder()
+            .margin_start(6)
+            .margin_end(6)
+            .margin_top(6)
+            .margin_bottom(6)
+            // .halign(gtk::Align::Center)
+            // .valign(gtk::Align::Center)
+            .vexpand(true)
+            .hexpand(true)
+            .row_spacing(6)
+            .column_spacing(6)
+            .build();
+        
+        let lang_input = Self::lang_selector();
+        let lang_output = Self::lang_selector();
 
-        source_combo_box.set_active_id(Some("detect"));
+        grid.attach(&lang_input, 0, 0, 1, 1);
+        grid.attach(&lang_output, 0, 1, 1, 1);
 
-        let target_combo_box: gtk::ComboBox = builder
-            .get_object("target_combo_box")
-            .expect("Couldn't get target_combo_box");
+        self.window.set_child(Some(&grid));
+    }
 
-        target_combo_box.set_active_id(Some(Language::default().as_code()));
+    fn lang_selector() -> gtk::ComboBoxText {
+        let selector = gtk::ComboBoxTextBuilder::new()
+            .valign(gtk::Align::Center)
+            .vexpand(true)
+            .build();
 
-        let no_connection_dialog: gtk::MessageDialog = builder
-            .get_object("no_connection")
-            .expect("Couldn't get no_connection dialog");
+        return selector;
+    }
 
-        no_connection_dialog.connect_response(
-            move |d: &gtk::MessageDialog, _: gtk::ResponseType| {
-                d.hide();
-            },
-        );
+    fn actions(&self) {
+        let about = gio::SimpleAction::new("about", None);
 
-        let language_detection_dialog: gtk::MessageDialog = builder
-            .get_object("language_detection")
-            .expect("Couldn't get language_detection dialog");
+        let myself = self.clone();
+        about.connect_activate(move |_, _| {
+            let d = myself.about_dialog();
+            d.present();
+        });
 
-        language_detection_dialog.connect_response(
-            move |d: &gtk::MessageDialog, _: gtk::ResponseType| {
-                d.hide();
-            },
-        );
+        self.application.add_action(&about);
+    }
 
-        let character_counter: gtk::Label = builder
-            .get_object("character_counter")
-            .expect("Couldn't get character_counter");
-        character_counter.set_text("0/5000");
+    fn header_bar() -> gtk::HeaderBar {
+        let header_bar = gtk::HeaderBar::new();
+    
+        let menu_model = gio::Menu::new();
+        menu_model.append(Some("About gtktranslate"), Some("app.about"));
+    
+        let menu_popover = gtk::PopoverMenuBuilder::new()
+            .menu_model(&menu_model)
+            .build();
+    
+        let menu_button = gtk::MenuButtonBuilder::new()
+            .popover(&menu_popover)
+            .build();
 
-        let source_text: gtk::TextView = builder
-            .get_object("source_text")
-            .expect("Couldn't get source_text");
-        source_text.set_wrap_mode(gtk::WrapMode::Word);
+        header_bar.pack_end(&menu_button);
+    
+        return header_bar;
+    }
 
-        let target_text: gtk::TextView = builder
-            .get_object("target_text")
-            .expect("Couldn't get target_text");
-        target_text.set_wrap_mode(gtk::WrapMode::Word);
-
-        source_text.get_buffer().connect_changed(clone!(@strong character_counter, @strong source_text => move |_| {
-            let source_buffer = source_text.get_buffer();
-            let text = source_buffer.get_text(&source_buffer.get_start_iter(), &source_buffer.get_end_iter(), false).to_string();
-
-            character_counter.set_text(&format!("{}/5000", text.chars().count()));
-
-            if text.chars().count() > 5000 {
-                source_buffer.set_text(&text[.. text.char_indices().nth(5000).map(|(i, _)| i).unwrap_or(text.len())]);
-            };
-        }));
-
-        let loading_spinner: gtk::Spinner = builder
-            .get_object("loading_spinner")
-            .expect("Couldn't get loading_spinner");
-        let translate_button: gtk::Button = builder
-            .get_object("translate_button")
-            .expect("Couldn't get translate_button");
-
-        translate_button.connect_clicked(clone!(
-            @strong source_text,
-            @strong target_text,
-            @strong source_combo_box,
-            @strong target_combo_box,
-            @strong translate_button,
-            @strong loading_spinner,
-            @strong no_connection_dialog,
-            @strong language_detection_dialog,
-            => move |_| {
-
-            let source_text = source_text.clone();
-            let target_text = target_text.clone();
-
-            let source_combo_box = source_combo_box.clone();
-            let target_combo_box = target_combo_box.clone();
-            let loading_spinner = loading_spinner.clone();
-
-            let language_detection_dialog = language_detection_dialog.clone();
-            let no_connection_dialog = no_connection_dialog.clone();
-
-            let main_context = MainContext::default();
-
-            main_context.spawn_local(async move {
-                loading_spinner.start();
-
-                let (start,end) = source_text.get_buffer().get_bounds();
-                let input = source_text.get_buffer().get_text(&start, &end, false).to_string();
-
-                let source: Option<Language> = match source_combo_box.get_active_id().unwrap().as_str() {
-                    "detect" => None,
-                    _ => Some(source_combo_box.get_active_id().unwrap().parse::<Language>().unwrap()),
-                };
-
-                let target: Language = match target_combo_box.get_active_id() {
-                    Some(target) => target.parse::<Language>().unwrap(),
-                    None => Language::default(),
-                };
-
-                let output: String = match input.as_str() {
-                    "" => String::from(""),
-                    _ => match libretranslate::translate(source, target, input).await {
-                        Ok(output) => output.output,
-                        Err(error) => {
-                            match error {
-                                TranslateError::DetectError => {
-                                    eprintln!("Language Detection Error");
-                                    language_detection_dialog.show();
-                                    String::from("")
-                                },
-                                _ => {
-                                    eprintln!("Error Connecting to Server");
-                                    no_connection_dialog.show();
-                                    String::from("")
-                                },
-                            }
-                        },
-                    },
-                };
-
-                target_text.get_buffer().set_text(output.as_str());
-
-                loading_spinner.stop();
-            });
-        }));
-
-        Self { window }
+    fn about_dialog(&self) -> gtk::AboutDialog {
+        let about = gtk::AboutDialogBuilder::new()
+            .name("gtktranslate")
+            .version("0.4.0")
+            .website_label("Website")
+            .website("https://github.com/grantshandy/gtktranslate/")
+            .comments("A GTK4 Libretranslate UI")
+            .license_type(gtk::License::Gpl30)
+            .copyright("Copyright © 2020-2021 Grant Handy")
+            .authors(vec!["Grant Handy".to_string()])
+            .transient_for(&self.window)
+            .application(&self.application)
+            .modal(true)
+            .build();
+        
+        return about;
     }
 }
