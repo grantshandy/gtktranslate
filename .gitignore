@@ -1,7 +1,4 @@
 /target
 /Cargo.lock
-/pkg
-/src/gtktranslate
-/gtktranslate
-/*.tar.zst
 Cargo.lock
+*.gresource
