@@ -162,7 +162,7 @@ impl GtkTranslateWindow {
         myself.actions();
         myself.read_config();
 
-        return myself;
+        myself
     }
 
     fn lang_selector() -> gtk::ComboBoxText {
@@ -183,7 +183,7 @@ impl GtkTranslateWindow {
 
         selector.set_active_id(Some("en"));
 
-        return selector;
+        selector
     }
 
     fn actions(&mut self) {
@@ -218,7 +218,9 @@ impl GtkTranslateWindow {
     }
 
     fn about_dialog(&self) -> gtk::AboutDialog {
-        let about = gtk::AboutDialogBuilder::new()
+        
+        
+        gtk::AboutDialogBuilder::new()
             .name("gtktranslate")
             .version("0.4.0")
             .website_label("Website")
@@ -231,9 +233,7 @@ impl GtkTranslateWindow {
             .application(&self.application)
             .modal(true)
             .logo_icon_name("gtktranslate")
-            .build();
-        
-        return about;
+            .build()
     }
 
     fn error_dialog<T: AsRef<str>>(&self, main: T, secondary: T) {
@@ -388,7 +388,7 @@ impl GtkTranslateWindow {
         };
 
         KEY.write().unwrap().clear();
-        KEY.write().unwrap().push_str(&k);
+        KEY.write().unwrap().push_str(k);
 
         let u = match deserialized.get(&"url".to_string()) {
             Some(data) => data,
@@ -399,7 +399,7 @@ impl GtkTranslateWindow {
         };
 
         URL.write().unwrap().clear();
-        URL.write().unwrap().push_str(&u);
+        URL.write().unwrap().push_str(u);
     }
 
     fn write_config(&self) -> File {
@@ -432,6 +432,6 @@ impl GtkTranslateWindow {
             }
         };
 
-        return file;
+        file
     }
 }
