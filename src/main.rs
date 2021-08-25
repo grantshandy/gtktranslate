@@ -1,27 +1,22 @@
 use gtk::gio;
 use gtk::glib;
-use gtk::prelude::*;
 use gtk::glib::{clone, MainContext};
+use gtk::prelude::*;
+use libretranslate::{Language, TranslationBuilder};
 use once_cell::sync::Lazy;
-use libretranslate::{TranslationBuilder, Language};
-use std::sync::RwLock;
+use std::collections::HashMap;
 use std::fs::File;
 use std::io::prelude::*;
-use std::collections::HashMap;
+use std::sync::RwLock;
 
-static KEY: Lazy<RwLock<String>> = Lazy::new(|| {
-    RwLock::new(String::new())
-});
+static KEY: Lazy<RwLock<String>> = Lazy::new(|| RwLock::new(String::new()));
 
-static URL: Lazy<RwLock<String>> = Lazy::new(|| {
-    RwLock::new(String::from("https://libretranslate.de/"))
-});
+static URL: Lazy<RwLock<String>> =
+    Lazy::new(|| RwLock::new(String::from("https://libretranslate.de/")));
 
 fn main() {
-    let application = gtk::Application::new(
-        Some("com.grantshandy.Gtktranslate"),
-        Default::default(),
-    );
+    let application =
+        gtk::Application::new(Some("com.grantshandy.Gtktranslate"), Default::default());
 
     application.connect_activate(move |application| {
         let window = GtkTranslateWindow::init(application);
@@ -71,9 +66,7 @@ impl GtkTranslateWindow {
             .menu_model(&menu_model)
             .build();
 
-        let menu_button = gtk::MenuButtonBuilder::new()
-            .popover(&menu_popover)
-            .build();
+        let menu_button = gtk::MenuButtonBuilder::new().popover(&menu_popover).build();
 
         header_bar.pack_end(&menu_button);
 
@@ -89,11 +82,11 @@ impl GtkTranslateWindow {
             .row_spacing(6)
             .column_spacing(6)
             .build();
-    
+
         let lang_input = Self::lang_selector();
         lang_input.prepend(Some("auto"), "Detect");
         lang_input.set_active_id(Some("auto"));
-        
+
         let lang_output = Self::lang_selector();
 
         grid.attach(&lang_input, 0, 0, 1, 1);
@@ -170,7 +163,7 @@ impl GtkTranslateWindow {
             .valign(gtk::Align::Center)
             .vexpand(true)
             .build();
-        
+
         selector.append(Some("en"), "English");
         selector.append(Some("ar"), "Arabic");
         selector.append(Some("zh"), "Chinese");
@@ -218,8 +211,6 @@ impl GtkTranslateWindow {
     }
 
     fn about_dialog(&self) -> gtk::AboutDialog {
-        
-        
         gtk::AboutDialogBuilder::new()
             .name("gtktranslate")
             .version("0.4.0")
@@ -245,12 +236,10 @@ impl GtkTranslateWindow {
             .transient_for(&self.window)
             .modal(true)
             .build();
-        
-        dialog.connect_response(
-            move |d: &gtk::MessageDialog, _: gtk::ResponseType| {
-                d.hide();
-            },
-        );
+
+        dialog.connect_response(move |d: &gtk::MessageDialog, _: gtk::ResponseType| {
+            d.hide();
+        });
 
         dialog.show();
     }
@@ -264,7 +253,7 @@ impl GtkTranslateWindow {
             .resizable(false)
             .title("Preferences")
             .build();
-        
+
         let grid = gtk::Grid::builder()
             .margin_start(6)
             .margin_end(6)
@@ -277,7 +266,7 @@ impl GtkTranslateWindow {
             .row_spacing(6)
             .column_spacing(6)
             .build();
-        
+
         let url_label = gtk::Label::new(Some("url:"));
         url_label.set_vexpand(true);
         let key_label = gtk::Label::new(Some("key:"));
@@ -292,22 +281,24 @@ impl GtkTranslateWindow {
         key_entry.set_text(KEY.read().unwrap().as_str());
 
         let save_button = gtk::Button::with_label("Save");
-        
+
         let myself = self.clone();
-        save_button.connect_clicked(clone!(@weak d, @weak url_entry, @weak key_entry => move |_| {
-            let k = key_entry.text().to_string();
-            let u = url_entry.text().to_string();
+        save_button.connect_clicked(
+            clone!(@weak d, @weak url_entry, @weak key_entry => move |_| {
+                let k = key_entry.text().to_string();
+                let u = url_entry.text().to_string();
 
-            KEY.write().unwrap().clear();
-            KEY.write().unwrap().push_str(&k);
+                KEY.write().unwrap().clear();
+                KEY.write().unwrap().push_str(&k);
 
-            URL.write().unwrap().clear();
-            URL.write().unwrap().push_str(&u);
+                URL.write().unwrap().clear();
+                URL.write().unwrap().push_str(&u);
 
-            let _ = myself.write_config();
+                let _ = myself.write_config();
 
-            d.close();
-        }));
+                d.close();
+            }),
+        );
 
         grid.attach(&url_label, 0, 0, 1, 1);
         grid.attach(&key_label, 0, 1, 1, 1);
@@ -328,11 +319,27 @@ impl GtkTranslateWindow {
         main_context.spawn_local(async move {
             myself.loading_spinner.start();
 
-            let source = myself.lang_input.active_id().unwrap().to_string().parse::<Language>().unwrap();
-            let target = myself.lang_output.active_id().unwrap().to_string().parse::<Language>().unwrap();
+            let source = myself
+                .lang_input
+                .active_id()
+                .unwrap()
+                .to_string()
+                .parse::<Language>()
+                .unwrap();
+            let target = myself
+                .lang_output
+                .active_id()
+                .unwrap()
+                .to_string()
+                .parse::<Language>()
+                .unwrap();
 
-            let (start,end) = myself.input_text.buffer().bounds();
-            let input = myself.input_text.buffer().text(&start, &end, false).to_string();
+            let (start, end) = myself.input_text.buffer().bounds();
+            let input = myself
+                .input_text
+                .buffer()
+                .text(&start, &end, false)
+                .to_string();
 
             let output: String = match input.as_str() {
                 "" => String::from(""),
@@ -343,13 +350,14 @@ impl GtkTranslateWindow {
                     .from_lang(source)
                     .to_lang(target)
                     .translate()
-                    .await {
+                    .await
+                {
                     Ok(data) => data.output,
                     Err(error) => {
                         myself.error_dialog("Error Translating", &error.to_string());
                         String::new()
                     }
-                }
+                },
             };
 
             myself.output_text.buffer().set_text(output.as_str());
@@ -363,11 +371,11 @@ impl GtkTranslateWindow {
             Some(data) => data,
             None => panic!("Couldn't find config dir"),
         };
-    
+
         config_dir.push("gtktranslate.yaml");
-    
+
         println!("config path: {}", config_dir.to_str().unwrap());
-    
+
         let mut file = match File::open(config_dir.clone()) {
             Ok(data) => data,
             Err(_) => self.write_config(),
@@ -377,7 +385,8 @@ impl GtkTranslateWindow {
 
         file.read_to_string(&mut contents).unwrap();
 
-        let deserialized: HashMap<String, String> = serde_yaml::from_str(contents.as_str()).unwrap();
+        let deserialized: HashMap<String, String> =
+            serde_yaml::from_str(contents.as_str()).unwrap();
 
         let k = match deserialized.get(&"key".to_string()) {
             Some(data) => data,
@@ -419,8 +428,14 @@ impl GtkTranslateWindow {
         };
 
         let mut map: HashMap<String, String> = HashMap::new();
-        map.insert(String::from("key"), KEY.read().unwrap().as_str().to_string());
-        map.insert(String::from("url"), URL.read().unwrap().as_str().to_string());
+        map.insert(
+            String::from("key"),
+            KEY.read().unwrap().as_str().to_string(),
+        );
+        map.insert(
+            String::from("url"),
+            URL.read().unwrap().as_str().to_string(),
+        );
 
         let s = serde_yaml::to_string(&map).unwrap();
 
